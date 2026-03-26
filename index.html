@@ -61,18 +61,20 @@
       text-decoration: none;
     }
 
+    /* Updated for logo.png */
     .nav-logo {
       width: 36px;
       height: 36px;
-      background: var(--orange);
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-
-    .nav-logo svg { width: 18px; height: 18px; }
+    .nav-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .nav-name {
       font-family: 'Fraunces', serif;
@@ -490,18 +492,20 @@
       gap: 12px;
     }
 
+    /* Updated for logo.png signature */
     .sig-avatar {
       width: 44px;
       height: 44px;
-      background: var(--orange);
       border-radius: 50%;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Fraunces', serif;
-      font-size: 18px;
-      color: white;
-      font-weight: 700;
+    }
+    .sig-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .sig-name {
@@ -844,17 +848,19 @@
       gap: 10px;
     }
 
+    /* Updated for logo.png footer icon */
     .footer-logo {
       width: 30px;
       height: 30px;
-      background: var(--orange);
-      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
-    .footer-logo svg { width: 14px; height: 14px; }
+    .footer-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .footer-name {
       font-family: 'Fraunces', serif;
@@ -898,14 +904,11 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-brand">
       <div class="nav-logo">
-        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 17h18v2H3v-2zm0-7h12v2H3v-2zm0-7h18v2H3V3z"/>
-        </svg>
+        <img src="logo.png" alt="The PPC Pal Logo">
       </div>
       <span class="nav-name">The PPC Pal</span>
     </a>
@@ -918,7 +921,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section>
   <div class="hero">
     <div class="hero-content">
@@ -999,7 +1001,6 @@
   </div>
 </section>
 
-<!-- PROOF STRIP -->
 <div class="proof-strip">
   <div class="proof-inner">
     <div class="proof-item">
@@ -1025,7 +1026,6 @@
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about">
     <div>
@@ -1057,7 +1057,9 @@
       <div class="about-card">
         <div class="about-card-quote">"I genuinely love helping local businesses get found. It's the part of this job that never gets old."</div>
         <div class="about-card-sig">
-          <div class="sig-avatar">P</div>
+          <div class="sig-avatar">
+            <img src="logo.png" alt="The PPC Pal">
+          </div>
           <div>
             <div class="sig-name">The PPC Pal</div>
             <div class="sig-role">Sherburn-in-Elmet, West Yorkshire</div>
@@ -1086,7 +1088,6 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="services">
     <div class="services-inner">
@@ -1119,7 +1120,6 @@
   </div>
 </section>
 
-<!-- AUDIT -->
 <section id="audit">
   <div class="audit-section">
     <div class="audit-box">
@@ -1146,7 +1146,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact">
     <div class="contact-inner">
@@ -1196,18 +1195,15 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-logo">
-        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 17h18v2H3v-2zm0-7h12v2H3v-2zm0-7h18v2H3V3z"/>
-        </svg>
+        <img src="logo.png" alt="The PPC Pal Logo">
       </div>
       <span class="footer-name">The PPC Pal</span>
     </div>
-    <span class="footer-copy">© 2025 The PPC Pal · Sherburn-in-Elmet, Yorkshire</span>
+    <span class="footer-copy">© 2026 The PPC Pal · Sherburn-in-Elmet, Yorkshire</span>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
