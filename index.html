@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The PPC Pal – Local Google Ads for Local Businesses</title>
-  <meta name="description" content="Friendly, no-nonsense Google Ads management for local businesses. Based in Sherburn-in-Elmet, Yorkshire. Get a free audit today." />
+  <title>The PPC Pal – Local Google Ads & Meta Ads for Local Businesses</title>
+  <meta name="description" content="Friendly, no-nonsense Google Ads and Meta Ads management for local businesses. Based in North & West Yorkshire. Get a free audit today." />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -582,7 +582,8 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      /* Updated to auto-fit to handle 4 cards elegantly */
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
     }
 
@@ -592,6 +593,8 @@
       border-radius: 14px;
       padding: 28px;
       transition: background 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card:hover {
@@ -624,6 +627,7 @@
       color: #999;
       line-height: 1.65;
       font-weight: 300;
+      flex-grow: 1; /* Pushes price to the bottom */
     }
 
     .service-price {
@@ -853,7 +857,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* Changed to use logo-white.png for the footer only */
     .footer-logo img {
       width: 100%;
       height: 100%;
@@ -1069,7 +1072,7 @@
             <div class="about-stat-label">Years of PPC experience</div>
           </div>
           <div>
-            <div class="about-stat-num">£1</div>
+            <div class="about-stat-num">£0</div>
             <div class="about-stat-label">For a free audit, it costs nothing</div>
           </div>
           <div>
@@ -1092,7 +1095,7 @@
       <div class="services-header">
         <div class="services-label">What I Do</div>
         <h2>Simple, honest PPC management</h2>
-        <p>Everything you need to get found on Google — nothing you don't.</p>
+        <p>Everything you need to get found on Google and Social Media — nothing you don't.</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
@@ -1105,6 +1108,12 @@
           <div class="service-icon">🔍</div>
           <h3>Google Search Ads</h3>
           <p>Show up at the top of Google when people search for your services. I handle the keywords, the copy, the bidding, and the ongoing optimisation — you just take the calls.</p>
+          <div class="service-price">From £150/month management</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Meta (Facebook & Instagram) Ads</h3>
+          <p>Reach your perfect local audience where they spend their time. From 'Stop the Scroll' creative to hyper-local targeting, I build campaigns that turn browsers into leads.</p>
           <div class="service-price">From £150/month management</div>
         </div>
         <div class="service-card">
@@ -1124,7 +1133,7 @@
       <div>
         <div class="audit-label">Free &amp; No Obligation</div>
         <h2>Find out what you're missing with a free audit</h2>
-        <p>I'll take a look at your online presence, check what your competitors are doing, and show you exactly what a simple Google Ads campaign could do for your business.</p>
+        <p>I'll take a look at your online presence, check what your competitors are doing, and show you exactly what a simple advertising campaign could do for your business.</p>
         <ul class="audit-list">
           <li>Are competitors running ads and beating you to enquiries?</li>
           <li>Which search terms are your potential customers using?</li>
@@ -1179,6 +1188,7 @@
             <option value="audit">Free PPC Audit</option>
             <option value="maps">Google Maps Ads</option>
             <option value="search">Google Search Ads</option>
+            <option value="meta">Meta (Facebook & Instagram) Ads</option>
             <option value="general">Just want to find out more</option>
           </select>
         </div>
@@ -1201,7 +1211,7 @@
       </div>
       <span class="footer-name">The PPC Pal</span>
     </div>
-    <span class="footer-copy">© 2025 The PPC Pal · Sherburn-in-Elmet, Yorkshire</span>
+    <span class="footer-copy">© 2026 The PPC Pal · North & West Yorkshire</span>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
