@@ -1,1224 +1,782 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The PPC Pal – Local Google Ads & Meta Ads for Local Businesses</title>
-  <meta name="description" content="Friendly, no-nonsense Google Ads and Meta Ads management for local businesses. Based in North & West Yorkshire. Get a free audit today." />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --orange: #e8520a;
-      --orange-light: #fff3ee;
-      --orange-mid: #f47840;
-      --ink: #1a1a1a;
-      --ink-mid: #4a4a4a;
-      --ink-light: #888;
-      --bg: #fdfcfa;
-      --white: #ffffff;
-      --rule: #ede9e3;
-      --green: #1e6e45;
-      --green-light: #eaf4ee;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The PPC Pal – Local Google & Meta Ads, Yorkshire</title>
+<meta name="description" content="Friendly, no-nonsense Google Ads and Meta Ads management for local businesses across North & West Yorkshire. Get a free audit today."/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --o:#e8520a; --o-l:#fff3ee; --o-m:#f47840;
+  --ink:#18171a; --ink-2:#4a4858; --ink-3:#9590a0;
+  --cream:#faf9f6; --cream-2:#f3f1ec;
+  --white:#fff; --rule:#e8e4dc;
+  --dark:#1a1825; --dark-2:#221f31;
+  --g:#1e6e45; --g-l:#eaf4ee;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--o);}
+.serif{font-family:'Fraunces',serif;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;border-radius:10px;transition:transform 0.15s,background 0.2s,border-color 0.2s;letter-spacing:0.2px;cursor:pointer;border:none;font-family:inherit;}
+.btn:hover{transform:translateY(-2px);}
+.btn-fill{background:var(–o);color:#fff;padding:14px 26px;}
+.btn-fill:hover{background:#c94508;}
+.btn-ghost{background:transparent;color:var(–ink);padding:13px 24px;border:1.5px solid var(–rule);}
+.btn-ghost:hover{border-color:var(–o);color:var(–o);}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(–rule);padding:0 32px;}
+.nav-inner{max-width:1100px;margin:0 auto;height:66px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-brand svg{width:32px;height:32px;flex-shrink:0;}
+.nav-brand-name{font-family:‘Fraunces’,serif;font-size:19px;font-weight:700;color:var(–ink);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(–ink-2);font-size:14px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(–o);}
+.nav-links .nav-cta{background:var(–o);color:#fff;padding:9px 20px;border-radius:8px;font-weight:700;}
+.nav-links .nav-cta:hover{background:#c94508;color:#fff;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(–ink);border-radius:2px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile{display:none;position:fixed;inset:0;top:66px;background:var(–white);z-index:190;padding:32px;flex-direction:column;gap:8px;border-top:1px solid var(–rule);}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{text-decoration:none;font-size:22px;font-family:‘Fraunces’,serif;font-weight:700;color:var(–ink);padding:14px 0;border-bottom:1px solid var(–rule);}
+.nav-mobile a:last-child{border-bottom:none;color:var(–o);}
+
+/* ── HERO ── */
+.hero-wrap{background:var(–cream);}
+.hero{max-width:1100px;margin:0 auto;padding:72px 32px 80px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.hero-lede{margin-bottom:16px;}
+.hero-lede .eyebrow{display:inline-flex;align-items:center;gap:7px;}
+.hero-lede .eyebrow::before{content:’’;width:6px;height:6px;background:var(–o);border-radius:50%;display:inline-block;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:‘Fraunces’,serif;font-size:clamp(38px,4vw,56px);line-height:1.05;letter-spacing:-1.5px;font-weight:900;color:var(–ink);margin:14px 0 22px;}
+.hero h1 em{font-style:italic;color:var(–o);}
+.hero h1 .ul{display:inline;background-image:linear-gradient(var(–o),var(–o));background-size:100% 3px;background-repeat:no-repeat;background-position:0 100%;}
+.hero-body{font-size:16px;color:var(–ink-2);line-height:1.7;font-weight:300;margin-bottom:32px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-proof{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.hero-proof-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(–ink-3);font-weight:500;}
+.hero-proof-item svg{width:13px;height:13px;stroke:var(–g);stroke-width:2.5;fill:none;}
+.hero-proof-dot{width:3px;height:3px;background:var(–rule);border-radius:50%;}
+
+/* Hero right — dual card layout */
+.hero-right{display:flex;flex-direction:column;gap:14px;position:relative;}
+
+/* Campaign card (original) */
+.hero-card{background:var(–white);border-radius:16px;border:1.5px solid var(–rule);padding:24px;box-shadow:0 12px 40px rgba(0,0,0,0.06);}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.card-title{font-size:12px;font-weight:700;color:var(–ink-3);text-transform:uppercase;letter-spacing:0.5px;}
+.card-badge{background:var(–g-l);color:var(–g);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;}
+.card-stat{margin-bottom:13px;}
+.card-stat-label{font-size:11.5px;color:var(–ink-3);margin-bottom:4px;}
+.card-stat-bar{height:7px;background:var(–rule);border-radius:100px;overflow:hidden;margin-bottom:4px;}
+.card-stat-fill{height:100%;border-radius:100px;background:var(–o);animation:fillBar 1.4s ease forwards;width:0;}
+@keyframes fillBar{to{width:var(–fill);}}
+.card-stat-nums{display:flex;justify-content:space-between;font-size:11px;color:var(–ink-3);}
+.card-divider{border:none;border-top:1px solid var(–rule);margin:16px 0;}
+.card-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.card-metric{text-align:center;}
+.card-metric-num{font-family:‘Fraunces’,serif;font-size:20px;color:var(–ink);font-weight:900;line-height:1;margin-bottom:2px;}
+.card-metric-label{font-size:10px;color:var(–ink-3);}
+
+/* Mini stat strip below card */
+.hero-mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.hms-cell{background:var(–dark);border-radius:10px;padding:14px 16px;}
+.hms-num{font-family:‘Fraunces’,serif;font-size:26px;font-weight:900;color:#fff;line-height:1;margin-bottom:3px;}
+.hms-num em{font-style:normal;color:var(–o);}
+.hms-label{font-size:11px;color:rgba(255,255,255,0.35);font-weight:500;}
+
+/* Float tags */
+.float-tag{position:absolute;background:var(–white);border:1.5px solid var(–rule);border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700;color:var(–ink);box-shadow:0 4px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:7px;z-index:2;}
+.float-tag-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.float-tag.tr{top:-14px;right:-14px;}
+.float-tag.bl{bottom:70px;left:-14px;}
+
+/* ── TICKER STRIP ── */
+.ticker-wrap{background:var(–white);border-top:1px solid var(–rule);border-bottom:1px solid var(–rule);padding:0;overflow:hidden;position:relative;}
+.ticker-wrap::before,.ticker-wrap::after{content:’’;position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(–white),transparent);}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(–white),transparent);}
+.ticker-track{display:flex;width:max-content;animation:ticker 28s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.ticker-item{display:flex;align-items:center;gap:10px;padding:16px 28px;white-space:nowrap;font-size:13.5px;font-weight:600;color:var(–ink-2);border-right:1px solid var(–rule);transition:color 0.2s;}
+.ticker-item:hover{color:var(–o);}
+.ticker-icon{width:28px;height:28px;background:var(–o-l);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+
+/* ── HOW IT WORKS ── */
+.how{padding:96px 32px;background:var(–cream);}
+.how-inner{max-width:1100px;margin:0 auto;}
+.how-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;margin-bottom:64px;}
+.how-header h2{font-family:‘Fraunces’,serif;font-size:clamp(30px,3.5vw,46px);font-weight:900;line-height:1.05;letter-spacing:-1px;}
+.how-header h2 em{font-style:italic;color:var(–o);}
+.how-header p{font-size:15px;color:var(–ink-2);line-height:1.7;font-weight:300;}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.how-steps::before{content:’’;position:absolute;top:27px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:1.5px;background:var(–rule);z-index:0;}
+.how-step{padding:0 16px;position:relative;z-index:1;cursor:default;}
+.how-step-num{
+width:54px;height:54px;
+background:var(–white);border:2px solid var(–rule);border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-family:‘Fraunces’,serif;font-size:22px;font-weight:900;color:var(–ink-3);
+margin-bottom:20px;
+transition:all 0.4s;
+position:relative;z-index:1;
+}
+.how-step.active .how-step-num{
+background:var(–o);border-color:var(–o);color:#fff;
+box-shadow:0 0 0 6px rgba(232,82,10,0.12);
+}
+.how-step-title{font-family:‘Fraunces’,serif;font-size:17px;font-weight:700;margin-bottom:8px;transition:color 0.3s;}
+.how-step.active .how-step-title{color:var(–o);}
+.how-step-body{font-size:13px;color:var(–ink-2);line-height:1.65;font-weight:300;}
+
+/* ── SERVICES ── */
+.services{background:var(–dark);padding:96px 32px;}
+.services-inner{max-width:1100px;margin:0 auto;}
+.services-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;margin-bottom:48px;}
+.services-header h2{font-family:‘Fraunces’,serif;font-size:clamp(30px,3.5vw,46px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:#fff;}
+.services-header h2 em{font-style:italic;color:var(–o);}
+.services-header p{font-size:15px;color:rgba(255,255,255,0.35);line-height:1.7;font-weight:300;}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.svc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;transition:background 0.2s,border-color 0.2s,transform 0.2s;}
+.svc-card:hover{background:rgba(232,82,10,0.08);border-color:rgba(232,82,10,0.25);transform:translateY(-2px);}
+.svc-emoji{width:48px;height:48px;background:rgba(255,255,255,0.06);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:background 0.2s;}
+.svc-card:hover .svc-emoji{background:rgba(232,82,10,0.2);}
+.svc-title{font-family:‘Fraunces’,serif;font-size:19px;font-weight:700;color:#fff;margin-bottom:8px;}
+.svc-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.65;font-weight:300;margin-bottom:14px;}
+.svc-tag{display:inline-block;background:rgba(232,82,10,0.15);color:var(–o-m);font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;}
+
+/* ── RESULTS ── */
+.results{padding:96px 32px;background:var(–cream-2);}
+.results-inner{max-width:1100px;margin:0 auto;}
+.results-header{text-align:center;margin-bottom:48px;}
+.results-header h2{font-family:‘Fraunces’,serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-top:10px;}
+.results-header h2 em{font-style:italic;color:var(–o);}
+.results-header p{font-size:15px;color:var(–ink-2);margin-top:10px;font-weight:300;}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.result-card{background:var(–white);border-radius:16px;padding:32px;border:1.5px solid var(–rule);}
+.result-tag{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(–ink-3);font-weight:700;margin-bottom:16px;}
+.result-nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px;}
+.result-num{text-align:center;padding:12px 8px;background:var(–cream);border-radius:8px;}
+.result-num-val{font-family:‘Fraunces’,serif;font-size:24px;font-weight:900;color:var(–ink);line-height:1;margin-bottom:2px;}
+.result-num-val.o{color:var(–o);}
+.result-num-label{font-size:10px;color:var(–ink-3);font-weight:600;}
+.result-sector{font-size:13px;font-weight:700;color:var(–ink);margin-bottom:4px;}
+.result-desc{font-size:12.5px;color:var(–ink-2);line-height:1.6;font-weight:300;}
+.result-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(–cream-2);border:2px dashed var(–rule);border-radius:16px;padding:48px 32px;text-align:center;}
+.result-ph-icon{font-size:32px;opacity:0.3;}
+.result-ph-text strong{display:block;font-size:14px;color:var(–ink-2);margin-bottom:6px;}
+.result-ph-text p{font-size:12.5px;color:var(–ink-3);line-height:1.6;}
+
+/* ── ABOUT ── */
+.about{padding:96px 32px;background:var(–white);}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-body .eyebrow{margin-bottom:14px;}
+.about-body h2{font-family:‘Fraunces’,serif;font-size:clamp(28px,3.5vw,42px);font-weight:900;line-height:1.08;letter-spacing:-0.8px;margin-bottom:20px;}
+.about-body h2 em{font-style:italic;color:var(–o);}
+.about-body p{font-size:15px;color:var(–ink-2);line-height:1.75;font-weight:300;margin-bottom:14px;}
+.about-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.about-list li{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:var(–ink-2);}
+.about-list-check{width:20px;height:20px;background:var(–g-l);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(–g);font-size:10px;font-weight:900;}
+.about-right{display:flex;flex-direction:column;gap:16px;}
+.about-photo{background:var(–cream-2);border-radius:16px;border:1.5px solid var(–rule);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:32px;}
+.about-photo-icon{font-size:36px;opacity:0.35;}
+.about-photo strong{font-size:14px;color:var(–ink-2);display:block;margin-bottom:4px;}
+.about-photo p{font-size:12px;color:var(–ink-3);line-height:1.5;}
+.about-quote{background:var(–dark);border-radius:14px;padding:24px 26px;}
+.about-quote-text{font-family:‘Fraunces’,serif;font-size:17px;font-style:italic;color:#fff;line-height:1.5;margin-bottom:16px;}
+.about-quote-sig{display:flex;align-items:center;gap:10px;}
+.about-quote-logo{width:32px;height:32px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(–o-l);}
+.about-quote-logo img{width:100%;height:100%;object-fit:contain;}
+.about-quote-logo svg{width:20px;height:20px;}
+.about-quote-name{font-size:13px;font-weight:700;color:#fff;}
+.about-quote-role{font-size:11px;color:rgba(255,255,255,0.35);}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.about-stat{text-align:center;padding:14px 8px;background:var(–cream);border-radius:10px;}
+.about-stat-num{font-family:‘Fraunces’,serif;font-size:22px;font-weight:900;color:var(–o);line-height:1;margin-bottom:3px;}
+.about-stat-label{font-size:10px;color:var(–ink-3);font-weight:600;line-height:1.3;}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:96px 32px;background:var(–cream);}
+.testimonials-inner{max-width:1100px;margin:0 auto;}
+.testimonials-header{margin-bottom:40px;}
+.testimonials-header h2{font-family:‘Fraunces’,serif;font-size:clamp(28px,3.5vw,42px);font-weight:900;line-height:1.05;letter-spacing:-0.8px;margin-top:10px;}
+.testimonials-header h2 em{font-style:italic;color:var(–o);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.t-card{background:var(–white);border-radius:14px;padding:26px;border:1.5px solid var(–rule);display:flex;flex-direction:column;gap:14px;}
+.t-stars{display:flex;gap:2px;}
+.t-star{width:13px;height:13px;background:var(–o);border-radius:3px;display:flex;align-items:center;justify-content:center;}
+.t-star::after{content:‘★’;font-size:8px;color:#fff;}
+.t-quote{font-family:‘Fraunces’,serif;font-size:16px;font-style:italic;color:var(–ink);line-height:1.55;flex:1;}
+.t-footer{border-top:1px solid var(–rule);padding-top:13px;}
+.t-name{font-size:13px;font-weight:700;color:var(–ink);}
+.t-role{font-size:11px;color:var(–ink-3);margin-top:1px;}
+.t-ph{background:var(–cream-2);border:2px dashed var(–rule);border-radius:14px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:180px;text-align:center;}
+.t-ph strong{font-size:13px;color:var(–ink-2);}
+.t-ph p{font-size:12px;color:var(–ink-3);line-height:1.5;}
+
+/* ── AUDIT CTA ── */
+.audit{padding:96px 32px;background:var(–cream-2);}
+.audit-inner{max-width:1100px;margin:0 auto;}
+.audit-box{background:var(–ink);border-radius:24px;padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden;}
+.audit-box::before{content:‘FREE’;position:absolute;right:-10px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:‘Fraunces’,serif;font-size:120px;font-weight:900;color:rgba(255,255,255,0.02);letter-spacing:-4px;pointer-events:none;white-space:nowrap;}
+.audit-box .eyebrow{color:var(–o-m);margin-bottom:16px;}
+.audit-box h2{font-family:‘Fraunces’,serif;font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.1;letter-spacing:-0.8px;color:#fff;margin-bottom:16px;}
+.audit-box h2 em{font-style:italic;color:var(–o);}
+.audit-box > div > p{font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;}
+.audit-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.audit-list li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.55);font-weight:500;}
+.audit-list li::before{content:‘→’;color:var(–o);font-size:13px;flex-shrink:0;}
+.audit-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px;}
+.audit-card-title{font-family:‘Fraunces’,serif;font-size:22px;color:#fff;margin-bottom:6px;}
+.audit-card-sub{font-size:13px;color:rgba(255,255,255,0.3);margin-bottom:24px;font-weight:300;line-height:1.5;}
+.audit-card-note{font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:12px;}
+
+/* ── CONTACT ── */
+.contact{padding:96px 32px;background:var(–white);border-top:1px solid var(–rule);}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start;}
+.contact-left .eyebrow{margin-bottom:14px;}
+.contact-left h2{font-family:‘Fraunces’,serif;font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.1;letter-spacing:-0.8px;margin-bottom:16px;}
+.contact-left h2 em{font-style:italic;color:var(–o);}
+.contact-left p{font-size:15px;color:var(–ink-2);line-height:1.7;font-weight:300;margin-bottom:32px;}
+.contact-details{display:flex;flex-direction:column;gap:14px;}
+.contact-detail{display:flex;align-items:center;gap:14px;}
+.cd-icon{width:38px;height:38px;background:var(–o-l);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.cd-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(–ink-3);font-weight:700;margin-bottom:1px;}
+.cd-val{font-size:14px;font-weight:600;color:var(–ink);}
+.cd-val a{text-decoration:none;color:var(–ink);transition:color 0.2s;}
+.cd-val a:hover{color:var(–o);}
+.contact-form{display:flex;flex-direction:column;gap:14px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{display:flex;flex-direction:column;gap:5px;}
+.form-group label{font-size:12px;font-weight:700;color:var(–ink);}
+.form-group input,.form-group select,.form-group textarea{font-family:‘Plus Jakarta Sans’,sans-serif;font-size:14px;padding:12px 14px;border:1.5px solid var(–rule);border-radius:8px;background:var(–cream);color:var(–ink);outline:none;transition:border-color 0.2s,background 0.2s,box-shadow 0.2s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(–o);background:var(–white);box-shadow:0 0 0 3px rgba(232,82,10,0.08);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(–ink-3);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{background:var(–o);color:#fff;border:none;padding:15px;border-radius:10px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s,transform 0.1s;width:100%;margin-top:4px;}
+.form-submit:hover{background:#c94508;transform:translateY(-1px);}
+.form-note{font-size:11.5px;color:var(–ink-3);text-align:center;margin-top:4px;}
+
+/* ── FOOTER ── */
+footer{background:var(–dark);padding:36px 32px;}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-brand svg{width:28px;height:28px;}
+.footer-name{font-family:‘Fraunces’,serif;color:rgba(255,255,255,0.6);font-size:15px;font-weight:700;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2);}
+.footer-links{display:flex;gap:20px;list-style:none;}
+.footer-links a{text-decoration:none;color:rgba(255,255,255,0.25);font-size:12px;transition:color 0.2s;}
+.footer-links a:hover{color:rgba(255,255,255,0.6);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+.hero{grid-template-columns:1fr;gap:48px;padding:56px 24px 64px;}
+.hero-right{display:none;}
+.how-header,.services-header{grid-template-columns:1fr;}
+.how-steps{grid-template-columns:1fr 1fr;gap:32px;}
+.how-steps::before{display:none;}
+.services-grid{grid-template-columns:1fr;}
+.results-grid{grid-template-columns:1fr;}
+.about-inner{grid-template-columns:1fr;gap:48px;}
+.about-stats{grid-template-columns:1fr 1fr;}
+.testimonials-grid{grid-template-columns:1fr;}
+.audit-box{grid-template-columns:1fr;padding:40px 32px;gap:32px;}
+.audit-box::before{display:none;}
+.contact-inner{grid-template-columns:1fr;gap:48px;}
+.nav-links{display:none;}
+.nav-hamburger{display:flex;}
+}
+@media(max-width:600px){
+nav,.how,.services,.results,.about,.testimonials,.audit,.contact{padding-left:20px;padding-right:20px;}
+.hero{padding:48px 20px 56px;}
+.how-steps{grid-template-columns:1fr;}
+.about-stats{grid-template-columns:1fr 1fr;}
+.form-row{grid-template-columns:1fr;}
+footer{padding:28px 20px;}
+.footer-inner{flex-direction:column;align-items:flex-start;gap:12px;}
+.audit-box{padding:32px 24px;}
+}
+</style>
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(253,252,250,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--rule);
-      padding: 0 24px;
-    }
-
-    .nav-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .nav-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .nav-name {
-      font-family: 'Fraunces', serif;
-      font-size: 20px;
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--ink-mid);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--orange); }
-
-    .nav-cta {
-      background: var(--orange);
-      color: white !important;
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.1s !important;
-    }
-
-    .nav-cta:hover {
-      background: #c94508 !important;
-      color: white !important;
-      transform: translateY(-1px);
-    }
-
-    /* HERO */
-    .hero {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 80px 24px 72px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--orange-light);
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-    }
-
-    .hero-tag span {
-      width: 6px;
-      height: 6px;
-      background: var(--orange);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(36px, 4vw, 52px);
-      line-height: 1.1;
-      letter-spacing: -1px;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--orange);
-    }
-
-    .hero-sub {
-      font-size: 17px;
-      color: var(--ink-mid);
-      line-height: 1.65;
-      margin-bottom: 32px;
-      font-weight: 300;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--orange);
-      color: white;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-      display: inline-block;
-    }
-
-    .btn-primary:hover {
-      background: #c94508;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--ink);
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      border: 1.5px solid var(--rule);
-      transition: border-color 0.2s, transform 0.1s;
-      display: inline-block;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--orange);
-      transform: translateY(-2px);
-    }
-
-    .hero-trust {
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--ink-light);
-    }
-
-    .trust-dot {
-      width: 5px;
-      height: 5px;
-      background: var(--rule);
-      border-radius: 50%;
-    }
-
-    /* HERO CARD */
-    .hero-visual {
-      position: relative;
-    }
-
-    .hero-card {
-      background: white;
-      border-radius: 16px;
-      border: 1.5px solid var(--rule);
-      padding: 28px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .card-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink-light);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .card-badge {
-      background: var(--green-light);
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 100px;
-    }
-
-    .card-stat {
-      margin-bottom: 16px;
-    }
-
-    .card-stat-label {
-      font-size: 12px;
-      color: var(--ink-light);
-      margin-bottom: 4px;
-    }
-
-    .card-stat-bar {
-      height: 8px;
-      background: var(--rule);
-      border-radius: 100px;
-      overflow: hidden;
-      margin-bottom: 4px;
-    }
-
-    .card-stat-fill {
-      height: 100%;
-      border-radius: 100px;
-      background: var(--orange);
-      animation: fillBar 1.4s ease forwards;
-      width: 0;
-    }
-
-    @keyframes fillBar {
-      to { width: var(--fill); }
-    }
-
-    .card-stat-nums {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--ink-light);
-    }
-
-    .card-divider {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 20px 0;
-    }
-
-    .card-metric-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-    }
-
-    .card-metric {
-      text-align: center;
-    }
-
-    .card-metric-num {
-      font-family: 'Fraunces', serif;
-      font-size: 22px;
-      color: var(--ink);
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 3px;
-    }
-
-    .card-metric-label {
-      font-size: 10.5px;
-      color: var(--ink-light);
-    }
-
-    .float-tag {
-      position: absolute;
-      background: white;
-      border: 1.5px solid var(--rule);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--ink);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .float-tag-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-    }
-
-    .float-tag.top-right {
-      top: -18px;
-      right: -18px;
-    }
-
-    .float-tag.bottom-left {
-      bottom: -18px;
-      left: -18px;
-    }
-
-    /* SOCIAL PROOF STRIP */
-    .proof-strip {
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      background: white;
-      padding: 20px 24px;
-    }
-
-    .proof-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .proof-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--ink-mid);
-    }
-
-    .proof-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--orange-light);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-    }
-
-    /* ABOUT */
-    .about {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .about-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--orange);
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .about h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(28px, 3vw, 38px);
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      margin-bottom: 18px;
-    }
-
-    .about p {
-      color: var(--ink-mid);
-      font-size: 16px;
-      line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: 16px;
-    }
-
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .highlight-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14.5px;
-      color: var(--ink-mid);
-    }
-
-    .highlight-check {
-      width: 20px;
-      height: 20px;
-      background: var(--green-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-      color: var(--green);
-      font-size: 11px;
-    }
-
-    .about-card {
-      background: white;
-      border-radius: 16px;
-      border: 1.5px solid var(--rule);
-      padding: 32px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-    }
-
-    .about-card-quote {
-      font-family: 'Fraunces', serif;
-      font-size: 20px;
-      line-height: 1.4;
-      color: var(--ink);
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-
-    .about-card-sig {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .sig-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sig-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .sig-name {
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--ink);
-    }
-
-    .sig-role {
-      font-size: 12px;
-      color: var(--ink-light);
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--rule);
-    }
-
-    .about-stat-num {
-      font-family: 'Fraunces', serif;
-      font-size: 30px;
-      color: var(--orange);
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .about-stat-label {
-      font-size: 12px;
-      color: var(--ink-light);
-    }
-
-    /* SERVICES */
-    .services {
-      background: var(--ink);
-      padding: 80px 24px;
-    }
-
-    .services-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-
-    .services-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .services-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--orange-mid);
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .services-header h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      color: white;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-    }
-
-    .services-header p {
-      color: #aaa;
-      font-size: 16px;
-      margin-top: 12px;
-      font-weight: 300;
-    }
-
-    .services-grid {
-      display: grid;
-      /* Updated to auto-fit to handle 4 cards elegantly */
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .service-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 28px;
-      transition: background 0.2s, transform 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-card:hover {
-      background: rgba(255,255,255,0.07);
-      transform: translateY(-3px);
-    }
-
-    .service-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--orange);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-
-    .service-card h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 19px;
-      color: white;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .service-card p {
-      font-size: 13.5px;
-      color: #999;
-      line-height: 1.65;
-      font-weight: 300;
-      flex-grow: 1; /* Pushes price to the bottom */
-    }
-
-    .service-price {
-      margin-top: 18px;
-      font-size: 12px;
-      color: var(--orange-mid);
-      font-weight: 600;
-    }
-
-    /* AUDIT */
-    .audit-section {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    .audit-box {
-      background: var(--orange-light);
-      border: 2px solid var(--orange);
-      border-radius: 20px;
-      padding: 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .audit-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--orange);
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .audit-box h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(26px, 3vw, 36px);
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-
-    .audit-box p {
-      font-size: 15px;
-      color: var(--ink-mid);
-      line-height: 1.65;
-      font-weight: 300;
-      margin-bottom: 8px;
-    }
-
-    .audit-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .audit-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--ink-mid);
-      font-weight: 500;
-    }
-
-    .audit-list li::before {
-      content: '✓';
-      width: 20px;
-      height: 20px;
-      background: var(--orange);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      flex-shrink: 0;
-    }
-
-    /* CONTACT */
-    .contact {
-      background: white;
-      padding: 80px 24px;
-      border-top: 1px solid var(--rule);
-    }
-
-    .contact-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--orange);
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .contact h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      margin-bottom: 14px;
-    }
-
-    .contact-sub {
-      font-size: 16px;
-      color: var(--ink-mid);
-      font-weight: 300;
-      margin-bottom: 40px;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      text-align: left;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
-      padding: 12px 16px;
-      border: 1.5px solid var(--rule);
-      border-radius: 8px;
-      background: var(--bg);
-      color: var(--ink);
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--orange);
-      background: white;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .form-submit {
-      background: var(--orange);
-      color: white;
-      border: none;
-      padding: 15px 32px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-      width: 100%;
-      margin-top: 4px;
-    }
-
-    .form-submit:hover {
-      background: #c94508;
-      transform: translateY(-2px);
-    }
-
-    .form-note {
-      text-align: center;
-      font-size: 12px;
-      color: var(--ink-light);
-      margin-top: 8px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--ink);
-      padding: 32px 24px;
-      color: #888;
-    }
-
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-logo {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .footer-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .footer-name {
-      font-family: 'Fraunces', serif;
-      color: white;
-      font-size: 16px;
-    }
-
-    .footer-copy { font-size: 13px; }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      color: #888;
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: white; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero, .about {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .hero-visual { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .audit-box { grid-template-columns: 1fr; padding: 32px; }
-      .form-row { grid-template-columns: 1fr; }
-      .proof-inner { gap: 24px; }
-      .nav-links { display: none; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
 </head>
 <body>
+
+<!-- ═══ NAV ═══ -->
 
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-      <div class="nav-logo">
-        <img src="logo.png" alt="The PPC Pal Logo">
-      </div>
-      <span class="nav-name">The PPC Pal</span>
+      <!-- NEW SVG LOGO - see note below -->
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="#e8520a"/>
+        <path d="M8 22L12 10L16 18L19 14L22 22" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="23" cy="10" r="2.5" fill="white" opacity="0.9"/>
+        <path d="M21 10.5L23 8.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-brand-name">The PPC Pal</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#audit">Free Audit</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="#how" onclick="closeNav()">How it works</a>
+  <a href="#about" onclick="closeNav()">About</a>
+  <a href="#services" onclick="closeNav()">Services</a>
+  <a href="#audit" onclick="closeNav()">Free Audit</a>
+  <a href="#contact" onclick="closeNav()">Get in Touch →</a>
+</div>
 
-<section>
+<!-- ═══ HERO ═══ -->
+
+<div class="hero-wrap">
   <div class="hero">
-    <div class="hero-content">
-      <div class="hero-tag"><span></span> Based in Sherburn-in-Elmet, Yorkshire</div>
-      <h1>Google Ads that work for <em>local</em> businesses</h1>
-      <p class="hero-sub">No jargon. No agency fees. Just straightforward PPC management from someone who knows what they're doing — and lives right around the corner.</p>
+    <div class="hero-left">
+      <div class="hero-lede"><span class="eyebrow">Based in Sherburn-in-Elmet, Yorkshire</span></div>
+      <h1 class="serif">Your competitors<br>aren't running<br><em>Google Ads.</em><br><span class="ul">Yet.</span></h1>
+      <p class="hero-body">No agency. No jargon. Just 10+ years of paid advertising expertise, working for your local business — from someone who actually lives around the corner.</p>
       <div class="hero-actions">
-        <a href="#audit" class="btn-primary">Get Your Free Audit →</a>
-        <a href="#contact" class="btn-secondary">Say Hello</a>
+        <a href="#audit" class="btn btn-fill">Get Your Free Audit →</a>
+        <a href="#how" class="btn btn-ghost">See How It Works</a>
       </div>
-      <div class="hero-trust">
-        <span>10+ years experience</span>
-        <span class="trust-dot"></span>
-        <span>Trades &amp; local businesses</span>
-        <span class="trust-dot"></span>
-        <span>No long contracts</span>
+      <div class="hero-proof">
+        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>10+ years experience</span>
+        <span class="hero-proof-dot"></span>
+        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>No long contracts</span>
+        <span class="hero-proof-dot"></span>
+        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Free audit, always</span>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="hero-card">
-        <div class="card-header">
-          <span class="card-title">Campaign Overview</span>
-          <span class="card-badge">● Live</span>
-        </div>
-
-        <div class="card-stat">
-          <div class="card-stat-label">Impressions this month</div>
-          <div class="card-stat-bar">
-            <div class="card-stat-fill" style="--fill: 78%"></div>
-          </div>
-          <div class="card-stat-nums"><span>2,847</span><span>↑ 34%</span></div>
-        </div>
-
-        <div class="card-stat">
-          <div class="card-stat-label">Click-through rate</div>
-          <div class="card-stat-bar">
-            <div class="card-stat-fill" style="--fill: 62%; animation-delay: 0.2s"></div>
-          </div>
-          <div class="card-stat-nums"><span>6.4%</span><span>↑ 12%</span></div>
-        </div>
-
-        <div class="card-stat">
-          <div class="card-stat-label">Calls generated</div>
-          <div class="card-stat-bar">
-            <div class="card-stat-fill" style="--fill: 85%; animation-delay: 0.4s"></div>
-          </div>
-          <div class="card-stat-nums"><span>31 calls</span><span>↑ 58%</span></div>
-        </div>
-
-        <hr class="card-divider">
-
-        <div class="card-metric-row">
-          <div class="card-metric">
-            <div class="card-metric-num">£2.14</div>
-            <div class="card-metric-label">Cost per click</div>
-          </div>
-          <div class="card-metric">
-            <div class="card-metric-num">£8.70</div>
-            <div class="card-metric-label">Cost per lead</div>
-          </div>
-          <div class="card-metric">
-            <div class="card-metric-num">£270</div>
-            <div class="card-metric-label">Ad spend</div>
-          </div>
-        </div>
+```
+<!-- Campaign card + mini stats -->
+<div class="hero-right">
+  <div style="position:relative;">
+    <div class="float-tag tr">
+      <div class="float-tag-icon" style="background:#eaf4ee">📍</div>
+      Targeting LS25 area
+    </div>
+    <div class="hero-card">
+      <div class="card-header">
+        <span class="card-title">Campaign Overview</span>
+        <span class="card-badge">● Live</span>
       </div>
-
-      <div class="float-tag top-right">
-        <div class="float-tag-icon" style="background:#eaf4ee">📍</div>
-        Targeting LS25 area
+      <div class="card-stat">
+        <div class="card-stat-label">Impressions this month</div>
+        <div class="card-stat-bar"><div class="card-stat-fill" style="--fill:78%"></div></div>
+        <div class="card-stat-nums"><span>2,847</span><span>↑ 34%</span></div>
       </div>
-      <div class="float-tag bottom-left">
-        <div class="float-tag-icon" style="background:#fff3ee">📞</div>
-        31 new enquiries
+      <div class="card-stat">
+        <div class="card-stat-label">Click-through rate</div>
+        <div class="card-stat-bar"><div class="card-stat-fill" style="--fill:62%;animation-delay:0.2s"></div></div>
+        <div class="card-stat-nums"><span>6.4%</span><span>↑ 12%</span></div>
       </div>
+      <div class="card-stat">
+        <div class="card-stat-label">Calls generated</div>
+        <div class="card-stat-bar"><div class="card-stat-fill" style="--fill:85%;animation-delay:0.4s"></div></div>
+        <div class="card-stat-nums"><span>31 calls</span><span>↑ 58%</span></div>
+      </div>
+      <hr class="card-divider"/>
+      <div class="card-metrics">
+        <div class="card-metric"><div class="card-metric-num">£2.14</div><div class="card-metric-label">Cost per click</div></div>
+        <div class="card-metric"><div class="card-metric-num">£8.70</div><div class="card-metric-label">Cost per lead</div></div>
+        <div class="card-metric"><div class="card-metric-num">£270</div><div class="card-metric-label">Ad spend</div></div>
+      </div>
+    </div>
+    <div class="float-tag bl">
+      <div class="float-tag-icon" style="background:#fff3ee">📞</div>
+      31 new enquiries
     </div>
   </div>
-</section>
+  <div class="hero-mini-stats">
+    <div class="hms-cell"><div class="hms-num"><em>£8.70</em></div><div class="hms-label">Cost per enquiry</div></div>
+    <div class="hms-cell"><div class="hms-num"><em>31</em></div><div class="hms-label">Calls this month</div></div>
+  </div>
+</div>
+```
 
-<div class="proof-strip">
-  <div class="proof-inner">
-    <div class="proof-item">
-      <div class="proof-icon">🔧</div>
-      <span>Builders &amp; Tradespeople</span>
-    </div>
-    <div class="proof-item">
-      <div class="proof-icon">🦷</div>
-      <span>Dental &amp; Aesthetics</span>
-    </div>
-    <div class="proof-item">
-      <div class="proof-icon">🏠</div>
-      <span>Estate Agents</span>
-    </div>
-    <div class="proof-item">
-      <div class="proof-icon">🚗</div>
-      <span>Garages &amp; Mechanics</span>
-    </div>
-    <div class="proof-item">
-      <div class="proof-icon">⚡</div>
-      <span>Electricians &amp; Specialists</span>
-    </div>
   </div>
 </div>
 
-<section id="about">
-  <div class="about">
-    <div>
-      <div class="about-label">Who I Am</div>
-      <h2>A friendly face, not a faceless agency</h2>
-      <p>I'm a local PPC specialist with over 10 years of hands-on experience running Google Ads campaigns. I started The PPC Pal because I kept seeing brilliant local businesses — the kind with great reviews and loyal customers — being completely invisible online.</p>
-      <p>I work with a small number of clients at a time so you always get my full attention, honest reporting, and someone you can actually call.</p>
-      <div class="about-highlights">
-        <div class="highlight-item">
-          <div class="highlight-check">✓</div>
-          <span>No confusing agency jargon — I'll explain everything in plain English</span>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-check">✓</div>
-          <span>You keep full ownership of your ad account, always</span>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-check">✓</div>
-          <span>Month-by-month — no long tie-in contracts</span>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-check">✓</div>
-          <span>Local to you — happy to meet for a coffee and chat it through</span>
-        </div>
-      </div>
-    </div>
+<!-- ═══ AUTO-TICKER ═══ -->
 
-    <div>
-      <div class="about-card">
-        <div class="about-card-quote">"I genuinely love helping local businesses get found. It's the part of this job that never gets old."</div>
-        <div class="about-card-sig">
-          <div class="sig-avatar">
-            <img src="logo.png" alt="The PPC Pal">
-          </div>
-          <div>
-            <div class="sig-name">The PPC Pal</div>
-            <div class="sig-role">Sherburn-in-Elmet, West Yorkshire</div>
-          </div>
+<div class="ticker-wrap">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><div class="ticker-icon">🔧</div>Builders &amp; Trades</div>
+    <div class="ticker-item"><div class="ticker-icon">🦷</div>Dental &amp; Aesthetics</div>
+    <div class="ticker-item"><div class="ticker-icon">🏠</div>Estate Agents</div>
+    <div class="ticker-item"><div class="ticker-icon">🚗</div>Garages &amp; Mechanics</div>
+    <div class="ticker-item"><div class="ticker-icon">⚡</div>Electricians</div>
+    <div class="ticker-item"><div class="ticker-icon">🌿</div>Landscapers</div>
+    <div class="ticker-item"><div class="ticker-icon">🏗️</div>Loft Conversions</div>
+    <div class="ticker-item"><div class="ticker-icon">🪟</div>Windows &amp; Doors</div>
+    <div class="ticker-item"><div class="ticker-icon">🛁</div>Bathrooms &amp; Kitchens</div>
+    <div class="ticker-item"><div class="ticker-icon">🎨</div>Painters &amp; Decorators</div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><div class="ticker-icon">🔧</div>Builders &amp; Trades</div>
+    <div class="ticker-item"><div class="ticker-icon">🦷</div>Dental &amp; Aesthetics</div>
+    <div class="ticker-item"><div class="ticker-icon">🏠</div>Estate Agents</div>
+    <div class="ticker-item"><div class="ticker-icon">🚗</div>Garages &amp; Mechanics</div>
+    <div class="ticker-item"><div class="ticker-icon">⚡</div>Electricians</div>
+    <div class="ticker-item"><div class="ticker-icon">🌿</div>Landscapers</div>
+    <div class="ticker-item"><div class="ticker-icon">🏗️</div>Loft Conversions</div>
+    <div class="ticker-item"><div class="ticker-icon">🪟</div>Windows &amp; Doors</div>
+    <div class="ticker-item"><div class="ticker-icon">🛁</div>Bathrooms &amp; Kitchens</div>
+    <div class="ticker-item"><div class="ticker-icon">🎨</div>Painters &amp; Decorators</div>
+  </div>
+</div>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+
+<section id="how">
+  <div class="how">
+    <div class="how-inner">
+      <div class="how-header">
+        <div>
+          <div class="eyebrow">The Process</div>
+          <h2 class="serif">From zero to <em>leads</em><br>in four steps</h2>
         </div>
-        <div class="about-stats">
-          <div>
-            <div class="about-stat-num">10+</div>
-            <div class="about-stat-label">Years of PPC experience</div>
-          </div>
-          <div>
-            <div class="about-stat-num">£0</div>
-            <div class="about-stat-label">For a free audit, it costs nothing</div>
-          </div>
-          <div>
-            <div class="about-stat-num">100%</div>
-            <div class="about-stat-label">Transparent reporting</div>
-          </div>
-          <div>
-            <div class="about-stat-num">Local</div>
-            <div class="about-stat-label">Yorkshire based, always</div>
-          </div>
+        <p>Most local businesses have never run Google Ads. Here's exactly what happens when you work with me — no surprises, no black boxes.</p>
+      </div>
+      <div class="how-steps" id="howSteps">
+        <div class="how-step" data-step="0">
+          <div class="how-step-num">1</div>
+          <div class="how-step-title serif">Free Audit</div>
+          <p class="how-step-body">I research your business, your competitors, and your local search landscape. You get a clear PDF showing exactly what's possible — free, no strings attached.</p>
+        </div>
+        <div class="how-step" data-step="1">
+          <div class="how-step-num">2</div>
+          <div class="how-step-title serif">Campaign Setup</div>
+          <p class="how-step-body">I build your campaigns, write the ad copy, install conversion tracking, and set up call recording. Usually live within a week of starting.</p>
+        </div>
+        <div class="how-step" data-step="2">
+          <div class="how-step-num">3</div>
+          <div class="how-step-title serif">Go Live</div>
+          <p class="how-step-body">Ads go live. I monitor daily during the first two weeks, optimising bids and keywords based on what the data actually tells us.</p>
+        </div>
+        <div class="how-step" data-step="3">
+          <div class="how-step-num">4</div>
+          <div class="how-step-title serif">Monthly Report</div>
+          <p class="how-step-body">A plain-English report every month — calls generated, cost per lead, what I changed and why. No dashboards to log into, no jargon to decode.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ═══ SERVICES ═══ -->
 
 <section id="services">
   <div class="services">
     <div class="services-inner">
       <div class="services-header">
-        <div class="services-label">What I Do</div>
-        <h2>Simple, honest PPC management</h2>
-        <p>Everything you need to get found on Google and Social Media — nothing you don't.</p>
+        <div>
+          <div class="eyebrow" style="color:var(--o-m)">What I Do</div>
+          <h2 class="serif">Simple, honest <em>PPC</em></h2>
+        </div>
+        <p>Everything you need to get found on Google and social media. Nothing you don't.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🗺️</div>
-          <h3>Google Maps Ads</h3>
-          <p>Get your business into the sponsored spots on Google Maps. Perfect for trades and local services — you appear exactly when someone nearby is searching for what you do.</p>
-          <div class="service-price">Great starting point · No website needed</div>
+        <div class="svc-card">
+          <div class="svc-emoji">🗺️</div>
+          <div>
+            <div class="svc-title serif">Google Maps Ads</div>
+            <p class="svc-desc">Get into the sponsored spots on Google Maps when people search "near me." Fastest route to local enquiries. No website needed to get started.</p>
+            <span class="svc-tag">Great starting point · No website needed</span>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <h3>Google Search Ads</h3>
-          <p>Show up at the top of Google when people search for your services. I handle the keywords, the copy, the bidding, and the ongoing optimisation — you just take the calls.</p>
-          <div class="service-price">From £150/month management</div>
+        <div class="svc-card">
+          <div class="svc-emoji">🔍</div>
+          <div>
+            <div class="svc-title serif">Google Search Ads</div>
+            <p class="svc-desc">Appear at the top of Google the moment someone searches for your service. I handle keywords, copy, bidding, and weekly optimisation. You take the calls.</p>
+            <span class="svc-tag">From £150/month management</span>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3>Meta (Facebook & Instagram) Ads</h3>
-          <p>Reach your perfect local audience where they spend their time. From 'Stop the Scroll' creative to hyper-local targeting, I build campaigns that turn browsers into leads.</p>
-          <div class="service-price">From £150/month management</div>
+        <div class="svc-card">
+          <div class="svc-emoji">📱</div>
+          <div>
+            <div class="svc-title serif">Meta (Facebook &amp; Instagram) Ads</div>
+            <p class="svc-desc">Stop-the-scroll creative, hyper-local targeting, lead forms straight to your inbox. Brilliant for visual or lifestyle-driven businesses.</p>
+            <span class="svc-tag">From £150/month management</span>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">📊</div>
-          <h3>Monthly Reporting</h3>
-          <p>A clear, plain-English report every month showing exactly what your budget achieved — clicks, calls, leads, and cost per enquiry. No waffle, just the numbers that matter.</p>
-          <div class="service-price">Included with every campaign</div>
+        <div class="svc-card">
+          <div class="svc-emoji">📊</div>
+          <div>
+            <div class="svc-title serif">Monthly Reporting</div>
+            <p class="svc-desc">Clear, honest report every month. Calls, clicks, cost per lead, what worked, what I'm changing. Written in plain English — not a dashboard screenshot.</p>
+            <span class="svc-tag">Included with every campaign</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="audit">
-  <div class="audit-section">
-    <div class="audit-box">
-      <div>
-        <div class="audit-label">Free &amp; No Obligation</div>
-        <h2>Find out what you're missing with a free audit</h2>
-        <p>I'll take a look at your online presence, check what your competitors are doing, and show you exactly what a simple advertising campaign could do for your business.</p>
-        <ul class="audit-list">
-          <li>Are competitors running ads and beating you to enquiries?</li>
-          <li>Which search terms are your potential customers using?</li>
-          <li>What would a realistic ad budget actually get you?</li>
-          <li>Is your Google Business Profile working hard enough?</li>
-        </ul>
+<!-- ═══ RESULTS ═══ -->
+
+<section id="results">
+  <div class="results">
+    <div class="results-inner">
+      <div class="results-header">
+        <div class="eyebrow">Results</div>
+        <h2 class="serif">What good PPC <em>actually</em> looks like</h2>
+        <p>Real numbers. Updated as client campaigns build results worth sharing.</p>
       </div>
-      <div>
-        <div style="background:white;border-radius:14px;padding:32px;border:1.5px solid rgba(232,82,10,0.2)">
-          <div style="font-family:'Fraunces',serif;font-size:20px;margin-bottom:6px;">It's completely free.</div>
-          <p style="font-size:14px;color:var(--ink-light);margin-bottom:24px;font-weight:300;">No catch, no sales pressure. Just an honest look at where you stand and what's possible.</p>
-          <a href="#contact" class="btn-primary" style="display:block;text-align:center;width:100%">Request Your Free Audit →</a>
-          <p style="font-size:12px;color:var(--ink-light);text-align:center;margin-top:14px;">I'll be in touch within 24 hours</p>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-tag">Case Study · Local Trades · Yorkshire</div>
+          <div class="result-nums">
+            <div class="result-num"><div class="result-num-val o">31</div><div class="result-num-label">Calls/month</div></div>
+            <div class="result-num"><div class="result-num-val">£8.70</div><div class="result-num-label">Per enquiry</div></div>
+            <div class="result-num"><div class="result-num-val">£270</div><div class="result-num-label">Ad spend</div></div>
+          </div>
+          <div class="result-sector">Google Maps Ads · LS25 area</div>
+          <p class="result-desc">A local trades business with no previous online advertising. Google Maps campaign built from scratch — 31 inbound calls in month one at under £9 per enquiry.</p>
+        </div>
+        <div class="result-placeholder">
+          <div class="result-ph-icon">📈</div>
+          <div class="result-ph-text">
+            <strong>More results coming soon</strong>
+            <p>Check back as campaigns build up results worth sharing.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ═══ ABOUT ═══ -->
+
+<section id="about">
+  <div class="about">
+    <div class="about-inner">
+      <div class="about-body">
+        <div class="eyebrow">Who I Am</div>
+        <h2 class="serif">A real person,<br>not an <em>agency</em></h2>
+        <p>I'm Jordan — a PPC specialist with over 10 years of hands-on experience managing Google and Meta ad campaigns across competitive industries where every pound of ad spend has to work hard.</p>
+        <p>I started The PPC Pal because I kept seeing brilliant local businesses — great reviews, loyal customers — being completely invisible online while their competitors got all the calls.</p>
+        <ul class="about-list">
+          <li><div class="about-list-check">✓</div><span>No jargon — everything explained in plain English</span></li>
+          <li><div class="about-list-check">✓</div><span>You own your ad account — always, no exceptions</span></li>
+          <li><div class="about-list-check">✓</div><span>Month-by-month — cancel any time, no long contracts</span></li>
+          <li><div class="about-list-check">✓</div><span>Small client list — you always get my full attention</span></li>
+          <li><div class="about-list-check">✓</div><span>Local — based in Sherburn-in-Elmet, happy to meet in person</span></li>
+        </ul>
+      </div>
+      <div class="about-right">
+        <div class="about-photo">
+          <div class="about-photo-icon">📸</div>
+          <strong>Add a photo of yourself here</strong>
+          <p>A real face builds more trust than any amount of copy. Even a decent phone photo in good light makes a significant difference to conversions.</p>
+        </div>
+        <div class="about-quote">
+          <div class="about-quote-text">"I genuinely love helping local businesses get found. It's the part of this job that never gets old."</div>
+          <div class="about-quote-sig">
+            <div class="about-quote-logo">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="20" height="20" rx="5" fill="#e8520a"/>
+                <path d="M4 14L6.5 7L9 12L11 9.5L13 14" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="14.5" cy="6.5" r="1.5" fill="white"/>
+              </svg>
+            </div>
+            <div>
+              <div class="about-quote-name">Jordan · The PPC Pal</div>
+              <div class="about-quote-role">Sherburn-in-Elmet, West Yorkshire</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat"><div class="about-stat-num">10+</div><div class="about-stat-label">Years PPC experience</div></div>
+          <div class="about-stat"><div class="about-stat-num">£0</div><div class="about-stat-label">Cost of free audit</div></div>
+          <div class="about-stat"><div class="about-stat-num">100%</div><div class="about-stat-label">Transparent reporting</div></div>
+          <div class="about-stat"><div class="about-stat-num">Local</div><div class="about-stat-label">Yorkshire based</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+
+<section id="testimonials">
+  <div class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header">
+        <div class="eyebrow">What Clients Say</div>
+        <h2 class="serif">Don't just take <em>my word</em> for it</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card">
+          <div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div>
+          <div class="t-quote serif">"Jordan set up our Google Ads and within the first month we had more enquiries than we knew what to do with. Explained everything too — no confusing nonsense."</div>
+          <div class="t-footer"><div class="t-name">Client Name</div><div class="t-role">Business Type · Location</div></div>
+        </div>
+        <div class="t-ph"><strong>Your testimonial here</strong><p>Replace with a real review from your first client as you collect them.</p></div>
+        <div class="t-ph"><strong>Your testimonial here</strong><p>Even one genuine testimonial is more powerful than three placeholders.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AUDIT ═══ -->
+
+<section id="audit">
+  <div class="audit">
+    <div class="audit-inner">
+      <div class="audit-box">
+        <div>
+          <div class="eyebrow">Free &amp; No Obligation</div>
+          <h2 class="serif">Find out what you're<br>missing with a <em>free audit</em></h2>
+          <p>I'll research your business, your competitors, and your local search landscape — then send you a clear report showing exactly what's possible.</p>
+          <ul class="audit-list">
+            <li>Are competitors running ads and beating you to enquiries?</li>
+            <li>Which search terms are your customers actually using?</li>
+            <li>What would a realistic budget actually get you?</li>
+            <li>Is your Google Business Profile working hard enough?</li>
+          </ul>
+        </div>
+        <div class="audit-card">
+          <div class="audit-card-title serif">It's completely free.</div>
+          <div class="audit-card-sub">No catch, no hard sell. Just an honest look at where you stand and what's possible for your business.</div>
+          <a href="#contact" class="btn btn-fill" style="display:flex;justify-content:center;width:100%">Request Your Free Audit →</a>
+          <div class="audit-card-note">I'll be in touch within 24 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
 
 <section id="contact">
   <div class="contact">
     <div class="contact-inner">
-      <div class="contact-label">Get In Touch</div>
-      <h2>Let's have a chat</h2>
-      <p class="contact-sub">Whether you want a free audit, have a question, or just want to find out if this is right for your business — drop me a message and I'll get back to you within 24 hours.</p>
-
+      <div class="contact-left">
+        <div class="eyebrow">Get In Touch</div>
+        <h2 class="serif">Let's have<br>a <em>chat</em></h2>
+        <p>Whether you want a free audit, have a question, or just want to know if this is right for your business — drop me a message. No sales pressure, ever.</p>
+        <div class="contact-details">
+          <div class="contact-detail"><div class="cd-icon">✉️</div><div><div class="cd-label">Email</div><div class="cd-val"><a href="mailto:jordan@theppcpal.co.uk">jordan@theppcpal.co.uk</a></div></div></div>
+          <div class="contact-detail"><div class="cd-icon">🌐</div><div><div class="cd-label">Website</div><div class="cd-val"><a href="https://theppcpal.co.uk">theppcpal.co.uk</a></div></div></div>
+          <div class="contact-detail"><div class="cd-icon">📍</div><div><div class="cd-label">Based In</div><div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div></div></div>
+          <div class="contact-detail"><div class="cd-icon">⏱️</div><div><div class="cd-label">Response Time</div><div class="cd-val">Within 24 hours, always</div></div></div>
+        </div>
+      </div>
       <form class="contact-form" action="https://formspree.io/f/xwvwpvgb" method="POST">
         <div class="form-row">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-          </div>
-          <div class="form-group">
-            <label for="business">Business Name</label>
-            <input type="text" id="business" name="business" placeholder="Smith's Plumbing" />
-          </div>
+          <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" name="name" placeholder="Jane Smith" required/></div>
+          <div class="form-group"><label for="business">Business Name</label><input type="text" id="business" name="business" placeholder="Smith's Plumbing"/></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@smithsplumbing.co.uk" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="07700 900000" />
-          </div>
+          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="jane@smithsplumbing.co.uk" required/></div>
+          <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="07700 900000"/></div>
         </div>
         <div class="form-group">
           <label for="interest">What are you interested in?</label>
           <select id="interest" name="interest">
-            <option value="">Please select...</option>
+            <option value="">Please select…</option>
             <option value="audit">Free PPC Audit</option>
             <option value="maps">Google Maps Ads</option>
             <option value="search">Google Search Ads</option>
-            <option value="meta">Meta (Facebook & Instagram) Ads</option>
+            <option value="meta">Meta (Facebook &amp; Instagram) Ads</option>
             <option value="general">Just want to find out more</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="message">Anything else you'd like to say?</label>
-          <textarea id="message" name="message" placeholder="Tell me a bit about your business and what you're hoping to achieve..."></textarea>
-        </div>
+        <div class="form-group"><label for="message">Tell me about your business</label><textarea id="message" name="message" placeholder="What do you do, where are you based, and what are you hoping to achieve?"></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
-        <p class="form-note">🔒 Your details are never shared or sold. I'll only use them to get back to you.</p>
+        <p class="form-note">🔒 Your details are never shared. I'll only use them to get back to you.</p>
       </form>
     </div>
   </div>
 </section>
 
+<!-- ═══ FOOTER ═══ -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo">
-        <img src="logo-white.png" alt="The PPC Pal Logo">
-      </div>
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="7" fill="#e8520a" opacity="0.9"/>
+        <path d="M6 20L9.5 10L13 17L15.5 13L18.5 20" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="20" cy="9" r="2" fill="white"/>
+      </svg>
       <span class="footer-name">The PPC Pal</span>
     </div>
-    <span class="footer-copy">© 2026 The PPC Pal · North & West Yorkshire</span>
+    <span class="footer-copy">© 2026 The PPC Pal · North &amp; West Yorkshire</span>
     <ul class="footer-links">
-      <li><a href="#about">About</a></li>
+      <li><a href="#how">How it works</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </footer>
+
+<script>
+// ── MOBILE NAV ──
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+function closeNav(){
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── SCROLL-TRIGGERED STEP HIGHLIGHTS ──
+const steps = document.querySelectorAll('.how-step');
+const howSection = document.getElementById('howSteps');
+
+if(steps.length && 'IntersectionObserver' in window){
+  // Activate step when it enters the viewport
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        // Deactivate all, then activate the one in view
+        steps.forEach(s => s.classList.remove('active'));
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.6, rootMargin: '0px 0px -10% 0px' });
+
+  steps.forEach(step => stepObserver.observe(step));
+
+  // Activate first step immediately if section is visible
+  const sectionObserver = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting){
+      steps[0].classList.add('active');
+    }
+  }, { threshold: 0.1 });
+  sectionObserver.observe(howSection);
+}
+</script>
 
 </body>
 </html>
