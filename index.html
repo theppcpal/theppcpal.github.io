@@ -27,18 +27,22 @@ a{color:inherit;}
 nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop-filter:blur(12px);border-bottom:1px solid #e8e4dc;padding:0 32px;}
 .nav-inner{max-width:1100px;margin:0 auto;height:66px;display:flex;align-items:center;justify-content:space-between;}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-brand svg{width:34px;height:34px;flex-shrink:0;}
+.nav-brand-logo{width:34px;height:34px;flex-shrink:0;}
 .nav-brand-name{font-family:‘Fraunces’,serif;font-size:19px;font-weight:700;color:#18171a;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{text-decoration:none;color:#4a4858;font-size:14px;font-weight:500;transition:color 0.2s;}
 .nav-links a:hover{color:#e8520a;}
 .nav-cta{background:#e8520a !important;color:#fff !important;padding:9px 20px;border-radius:8px;font-weight:700 !important;}
 .nav-cta:hover{background:#c94508 !important;}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+
+/* Hamburger — must be hidden on desktop */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px;background:none;border:none;width:36px;height:36px;}
 .nav-hamburger span{display:block;width:22px;height:2px;background:#18171a;border-radius:2px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile nav overlay */
 .nav-mobile{display:none;position:fixed;inset:0;top:66px;background:#fff;z-index:190;padding:32px;flex-direction:column;gap:0;border-top:1px solid #e8e4dc;overflow-y:auto;}
 .nav-mobile.open{display:flex;}
 .nav-mobile a{text-decoration:none;font-size:22px;font-family:‘Fraunces’,serif;font-weight:700;color:#18171a;padding:16px 0;border-bottom:1px solid #e8e4dc;display:block;}
@@ -47,7 +51,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 /* ── HERO ── */
 .hero{max-width:1100px;margin:0 auto;padding:72px 32px 80px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
 
-/* Hero left */
+/* Left column */
 .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#e8520a;margin-bottom:16px;}
 .hero-eyebrow::before{content:’’;width:6px;height:6px;background:#e8520a;border-radius:50%;display:inline-block;animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -59,34 +63,44 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .hero-proof{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .hero-proof-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#9590a0;font-weight:500;}
 .hero-proof-item svg{width:13px;height:13px;stroke:#1e6e45;stroke-width:2.5;fill:none;flex-shrink:0;}
-.hero-proof-dot{width:3px;height:3px;background:#e8e4dc;border-radius:50%;}
+.hero-proof-dot{width:3px;height:3px;background:#e8e4dc;border-radius:50%;flex-shrink:0;}
 
-/* Hero right */
-.hero-right{display:flex;flex-direction:column;gap:14px;position:relative;}
-.hero-card{background:#fff;border-radius:16px;border:1.5px solid #e8e4dc;padding:24px;box-shadow:0 12px 40px rgba(0,0,0,0.07);position:relative;}
+/* Right column — campaign card */
+.hero-card-wrap{position:relative;}
+.hero-card{background:#fff;border-radius:16px;border:1.5px solid #e8e4dc;padding:24px;box-shadow:0 12px 40px rgba(0,0,0,0.07);}
 .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
-.card-title-txt{font-size:12px;font-weight:700;color:#9590a0;text-transform:uppercase;letter-spacing:0.5px;}
+.card-head-txt{font-size:12px;font-weight:700;color:#9590a0;text-transform:uppercase;letter-spacing:0.5px;}
 .card-badge{background:#eaf4ee;color:#1e6e45;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;}
 .card-stat{margin-bottom:13px;}
-.card-stat-label{font-size:11.5px;color:#9590a0;margin-bottom:4px;}
-.card-stat-bar{height:7px;background:#e8e4dc;border-radius:100px;overflow:hidden;margin-bottom:4px;}
-.card-stat-fill{height:100%;border-radius:100px;background:#e8520a;animation:fillBar 1.4s ease forwards;width:0;}
-@keyframes fillBar{to{width:var(–fill);}}
+.card-stat-lbl{font-size:11.5px;color:#9590a0;margin-bottom:5px;}
+.bar-track{height:7px;background:#e8e4dc;border-radius:100px;overflow:hidden;margin-bottom:4px;}
+.bar-fill{height:100%;border-radius:100px;background:#e8520a;width:0;}
+/* Hardcoded keyframe animations — no CSS custom properties */
+.bar-78{animation:bar78 1.4s ease 0.3s forwards;}
+.bar-62{animation:bar62 1.4s ease 0.5s forwards;}
+.bar-85{animation:bar85 1.4s ease 0.7s forwards;}
+@keyframes bar78{to{width:78%;}}
+@keyframes bar62{to{width:62%;}}
+@keyframes bar85{to{width:85%;}}
 .card-stat-nums{display:flex;justify-content:space-between;font-size:11px;color:#9590a0;}
-.card-divider{border:none;border-top:1px solid #e8e4dc;margin:16px 0;}
+.card-divider{border:none;border-top:1px solid #e8e4dc;margin:14px 0;}
 .card-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 .card-metric{text-align:center;}
 .card-metric-num{font-family:‘Fraunces’,serif;font-size:20px;color:#18171a;font-weight:900;line-height:1;margin-bottom:2px;}
-.card-metric-label{font-size:10px;color:#9590a0;}
-.float-tag{position:absolute;background:#fff;border:1.5px solid #e8e4dc;border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700;color:#18171a;box-shadow:0 4px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:7px;z-index:2;white-space:nowrap;}
-.float-tag-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;}
-.float-tag.tr{top:-14px;right:-14px;}
-.float-tag.bl{bottom:70px;left:-14px;}
-.hero-mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.card-metric-lbl{font-size:10px;color:#9590a0;}
+
+/* Float tags */
+.float-tag{position:absolute;background:#fff;border:1.5px solid #e8e4dc;border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700;color:#18171a;box-shadow:0 4px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:7px;white-space:nowrap;z-index:3;}
+.float-tag-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.ftag-tr{top:-14px;right:-14px;}
+.ftag-bl{bottom:-14px;left:-14px;}
+
+/* Mini stats below card */
+.hero-mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
 .hms-cell{background:#1a1825;border-radius:10px;padding:14px 16px;}
-.hms-num{font-family:‘Fraunces’,serif;font-size:26px;font-weight:900;color:#fff;line-height:1;margin-bottom:3px;}
+.hms-num{font-family:‘Fraunces’,serif;font-size:24px;font-weight:900;color:#fff;line-height:1;margin-bottom:3px;}
 .hms-num em{font-style:normal;color:#f47840;}
-.hms-label{font-size:11px;color:rgba(255,255,255,0.35);font-weight:500;}
+.hms-lbl{font-size:11px;color:rgba(255,255,255,0.35);font-weight:500;}
 
 /* ── TICKER ── */
 .ticker-wrap{background:#fff;border-top:1px solid #e8e4dc;border-bottom:1px solid #e8e4dc;overflow:hidden;position:relative;}
@@ -100,11 +114,14 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .ticker-item:hover{color:#e8520a;}
 .ticker-icon{width:28px;height:28px;background:#fff3ee;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 
+/* ── SECTION HELPERS ── */
+.eyebrow{display:block;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#e8520a;margin-bottom:12px;}
+.eyebrow-light{color:#f47840;}
+
 /* ── HOW IT WORKS ── */
 .how{padding:96px 32px;background:#faf9f6;}
 .how-inner{max-width:1100px;margin:0 auto;}
 .how-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;margin-bottom:64px;}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#e8520a;margin-bottom:12px;display:block;}
 .how-header h2{font-family:‘Fraunces’,serif;font-size:clamp(30px,3.5vw,46px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:#18171a;}
 .how-header h2 em{font-style:italic;color:#e8520a;}
 .how-header p{font-size:15px;color:#4a4858;line-height:1.7;font-weight:300;}
@@ -123,7 +140,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .services-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;margin-bottom:48px;}
 .services-header h2{font-family:‘Fraunces’,serif;font-size:clamp(30px,3.5vw,46px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:#fff;}
 .services-header h2 em{font-style:italic;color:#e8520a;}
-.services-eyebrow{color:#f47840;}
 .services-header p{font-size:15px;color:rgba(255,255,255,0.35);line-height:1.7;font-weight:300;}
 .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .svc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:26px 28px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;transition:background 0.2s,border-color 0.2s,transform 0.2s;}
@@ -148,7 +164,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .result-num{text-align:center;padding:12px 8px;background:#faf9f6;border-radius:8px;}
 .result-num-val{font-family:‘Fraunces’,serif;font-size:24px;font-weight:900;color:#18171a;line-height:1;margin-bottom:2px;}
 .result-num-val.o{color:#e8520a;}
-.result-num-label{font-size:10px;color:#9590a0;font-weight:600;}
+.result-num-lbl{font-size:10px;color:#9590a0;font-weight:600;}
 .result-sector{font-size:13px;font-weight:700;color:#18171a;margin-bottom:4px;}
 .result-desc{font-size:12.5px;color:#4a4858;line-height:1.6;font-weight:300;}
 .result-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#faf9f6;border:2px dashed #e8e4dc;border-radius:16px;padding:48px 32px;text-align:center;}
@@ -167,21 +183,20 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .about-list-check{width:20px;height:20px;background:#eaf4ee;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:#1e6e45;font-size:10px;font-weight:900;}
 .about-right{display:flex;flex-direction:column;gap:16px;}
 .about-photo{background:#f3f1ec;border-radius:16px;border:1.5px solid #e8e4dc;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:32px;}
-.about-photo .photo-icon{font-size:36px;opacity:0.3;}
+.about-photo .ph-icon{font-size:36px;opacity:0.3;}
 .about-photo strong{font-size:14px;color:#4a4858;display:block;margin-bottom:4px;}
 .about-photo p{font-size:12px;color:#9590a0;line-height:1.5;}
 .about-quote{background:#1a1825;border-radius:14px;padding:24px 26px;}
 .about-quote-text{font-family:‘Fraunces’,serif;font-size:17px;font-style:italic;color:#fff;line-height:1.5;margin-bottom:16px;}
 .about-quote-sig{display:flex;align-items:center;gap:10px;}
 .about-quote-logo{width:32px;height:32px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff3ee;flex-shrink:0;}
-.about-quote-logo img{width:100%;height:100%;object-fit:contain;}
 .about-quote-logo svg{width:20px;height:20px;}
 .about-quote-name{font-size:13px;font-weight:700;color:#fff;}
 .about-quote-role{font-size:11px;color:rgba(255,255,255,0.35);}
 .about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
 .about-stat{text-align:center;padding:14px 8px;background:#faf9f6;border-radius:10px;}
 .about-stat-num{font-family:‘Fraunces’,serif;font-size:22px;font-weight:900;color:#e8520a;line-height:1;margin-bottom:3px;}
-.about-stat-label{font-size:10px;color:#9590a0;font-weight:600;line-height:1.3;}
+.about-stat-lbl{font-size:10px;color:#9590a0;font-weight:600;line-height:1.3;}
 
 /* ── TESTIMONIALS ── */
 .testimonials{padding:96px 32px;background:#faf9f6;}
@@ -207,7 +222,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .audit-inner{max-width:1100px;margin:0 auto;}
 .audit-box{background:#18171a;border-radius:24px;padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden;}
 .audit-box::before{content:‘FREE’;position:absolute;right:-10px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:‘Fraunces’,serif;font-size:120px;font-weight:900;color:rgba(255,255,255,0.02);letter-spacing:-4px;pointer-events:none;white-space:nowrap;line-height:1;}
-.audit-eyebrow{color:#f47840;}
 .audit-box h2{font-family:‘Fraunces’,serif;font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.1;letter-spacing:-0.8px;color:#fff;margin-top:12px;margin-bottom:16px;}
 .audit-box h2 em{font-style:italic;color:#e8520a;}
 .audit-box > div > p{font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;}
@@ -228,7 +242,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 .contact-details{display:flex;flex-direction:column;gap:14px;}
 .contact-detail{display:flex;align-items:center;gap:14px;}
 .cd-icon{width:38px;height:38px;background:#fff3ee;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.cd-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9590a0;font-weight:700;margin-bottom:1px;}
+.cd-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9590a0;font-weight:700;margin-bottom:1px;}
 .cd-val{font-size:14px;font-weight:600;color:#18171a;}
 .cd-val a{text-decoration:none;color:#18171a;transition:color 0.2s;}
 .cd-val a:hover{color:#e8520a;}
@@ -248,7 +262,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,249,246,0.96);backdrop
 footer{background:#1a1825;padding:36px 32px;}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
 .footer-brand{display:flex;align-items:center;gap:10px;}
-.footer-brand svg{width:28px;height:28px;}
+.footer-brand-logo{width:28px;height:28px;}
 .footer-name{font-family:‘Fraunces’,serif;color:rgba(255,255,255,0.6);font-size:15px;font-weight:700;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);}
 .footer-links{display:flex;gap:20px;list-style:none;}
@@ -256,17 +270,14 @@ footer{background:#1a1825;padding:36px 32px;}
 .footer-links a:hover{color:rgba(255,255,255,0.6);}
 
 /* ── RESPONSIVE ── */
+/* Hide hero card on anything below 1024px — covers all phones and landscape phones */
 @media(max-width:1024px){
-.hero{gap:36px;}
-.hero h1{font-size:clamp(34px,3.5vw,46px);}
-}
-@media(max-width:768px){
-.hero{grid-template-columns:1fr;padding:48px 20px 56px;}
-.hero-right{display:none;}
+.hero{grid-template-columns:1fr;padding:56px 24px 64px;}
+.hero-card-wrap,.hero-mini-stats{display:none;}
 .how-header,.services-header,.audit-box{grid-template-columns:1fr;}
 .how-steps{grid-template-columns:1fr 1fr;gap:32px;}
 .how-steps::before{display:none;}
-.services-grid,.results-grid,.testimonials-grid{grid-template-columns:1fr;}
+.services-grid,.testimonials-grid,.results-grid{grid-template-columns:1fr;}
 .about-inner{grid-template-columns:1fr;gap:48px;}
 .about-stats{grid-template-columns:1fr 1fr;}
 .contact-inner{grid-template-columns:1fr;gap:40px;}
@@ -276,25 +287,24 @@ footer{background:#1a1825;padding:36px 32px;}
 .audit-box::before{display:none;}
 .how,.services,.results,.about,.testimonials,.audit,.contact{padding:64px 20px;}
 footer{padding:28px 20px;}
-.footer-inner{flex-direction:column;align-items:flex-start;}
 }
-@media(max-width:480px){
+@media(max-width:600px){
 .hero{padding:40px 16px 48px;}
 .form-row{grid-template-columns:1fr;}
 .how-steps{grid-template-columns:1fr;}
-.card-metrics{grid-template-columns:1fr 1fr 1fr;}
+.footer-inner{flex-direction:column;align-items:flex-start;}
 }
 </style>
 
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══ NAV ═══ -->
 
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-      <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="nav-brand-logo" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="34" height="34" rx="8" fill="#e8520a"/>
         <path d="M7 24L11.5 11L16 19.5L19.5 14.5L23.5 24" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="25" cy="10.5" r="2.5" fill="white" opacity="0.9"/>
@@ -309,12 +319,17 @@ footer{padding:28px 20px;}
       <li><a href="#audit">Free Audit</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </div>
 </nav>
-<div class="nav-mobile" id="mobileNav">
+
+<!-- Mobile nav -->
+
+<div class="nav-mobile" id="mobileNav" role="navigation">
   <a href="#how" onclick="closeNav()">How it works</a>
   <a href="#about" onclick="closeNav()">About</a>
   <a href="#services" onclick="closeNav()">Services</a>
@@ -322,74 +337,101 @@ footer{padding:28px 20px;}
   <a href="#contact" onclick="closeNav()">Get in Touch →</a>
 </div>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 
 <section>
   <div class="hero">
-    <div>
-      <div class="hero-eyebrow">Based in Sherburn-in-Elmet, Yorkshire</div>
-      <h1 style="font-family:'Fraunces',serif;">
-        Your competitors<br>
-        aren't running<br>
-        <em>Google Ads.</em><br>
-        <span class="ul">Yet.</span>
-      </h1>
-      <p class="hero-body">No agency. No jargon. Just 10+ years of paid advertising expertise, working for your local business — from someone who actually lives around the corner.</p>
-      <div class="hero-actions">
-        <a href="#audit" class="btn btn-fill">Get Your Free Audit →</a>
-        <a href="#how" class="btn btn-ghost">See How It Works</a>
-      </div>
-      <div class="hero-proof">
-        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>10+ years experience</span>
-        <span class="hero-proof-dot"></span>
-        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>No long contracts</span>
-        <span class="hero-proof-dot"></span>
-        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Free audit, always</span>
-      </div>
-    </div>
 
 ```
-<div class="hero-right">
-  <div style="position:relative;">
-    <div class="float-tag tr">
+<!-- Left: Copy -->
+<div class="hero-left">
+  <div class="hero-eyebrow">Based in Sherburn-in-Elmet, Yorkshire</div>
+  <h1>
+    Your competitors<br>
+    aren't running<br>
+    <em>Google Ads.</em><br>
+    <span class="ul">Yet.</span>
+  </h1>
+  <p class="hero-body">No agency. No jargon. Just 10+ years of paid advertising expertise, working for your local business — from someone who actually lives around the corner.</p>
+  <div class="hero-actions">
+    <a href="#audit" class="btn btn-fill">Get Your Free Audit →</a>
+    <a href="#how" class="btn btn-ghost">See How It Works</a>
+  </div>
+  <div class="hero-proof">
+    <span class="hero-proof-item">
+      <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>
+      10+ years experience
+    </span>
+    <span class="hero-proof-dot"></span>
+    <span class="hero-proof-item">
+      <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>
+      No long contracts
+    </span>
+    <span class="hero-proof-dot"></span>
+    <span class="hero-proof-item">
+      <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>
+      Free audit, always
+    </span>
+  </div>
+</div>
+
+<!-- Right: Campaign card -->
+<div>
+  <div class="hero-card-wrap">
+    <div class="float-tag ftag-tr">
       <div class="float-tag-icon" style="background:#eaf4ee">📍</div>
       Targeting LS25 area
     </div>
     <div class="hero-card">
       <div class="card-header">
-        <span class="card-title-txt">Campaign Overview</span>
+        <span class="card-head-txt">Campaign Overview</span>
         <span class="card-badge">● Live</span>
       </div>
       <div class="card-stat">
-        <div class="card-stat-label">Impressions this month</div>
-        <div class="card-stat-bar"><div class="card-stat-fill" style="--fill:78%"></div></div>
+        <div class="card-stat-lbl">Impressions this month</div>
+        <div class="bar-track"><div class="bar-fill bar-78"></div></div>
         <div class="card-stat-nums"><span>2,847</span><span>↑ 34%</span></div>
       </div>
       <div class="card-stat">
-        <div class="card-stat-label">Click-through rate</div>
-        <div class="card-stat-bar"><div class="card-stat-fill" style="--fill:62%;animation-delay:0.2s"></div></div>
+        <div class="card-stat-lbl">Click-through rate</div>
+        <div class="bar-track"><div class="bar-fill bar-62"></div></div>
         <div class="card-stat-nums"><span>6.4%</span><span>↑ 12%</span></div>
       </div>
       <div class="card-stat">
-        <div class="card-stat-label">Calls generated</div>
-        <div class="card-stat-bar"><div class="card-stat-fill" style="--fill:85%;animation-delay:0.4s"></div></div>
+        <div class="card-stat-lbl">Calls generated</div>
+        <div class="bar-track"><div class="bar-fill bar-85"></div></div>
         <div class="card-stat-nums"><span>31 calls</span><span>↑ 58%</span></div>
       </div>
       <hr class="card-divider"/>
       <div class="card-metrics">
-        <div class="card-metric"><div class="card-metric-num">£2.14</div><div class="card-metric-label">Cost per click</div></div>
-        <div class="card-metric"><div class="card-metric-num">£8.70</div><div class="card-metric-label">Cost per lead</div></div>
-        <div class="card-metric"><div class="card-metric-num">£270</div><div class="card-metric-label">Ad spend</div></div>
+        <div class="card-metric">
+          <div class="card-metric-num">£2.14</div>
+          <div class="card-metric-lbl">Cost per click</div>
+        </div>
+        <div class="card-metric">
+          <div class="card-metric-num">£8.70</div>
+          <div class="card-metric-lbl">Cost per lead</div>
+        </div>
+        <div class="card-metric">
+          <div class="card-metric-num">£270</div>
+          <div class="card-metric-lbl">Ad spend</div>
+        </div>
       </div>
     </div>
-    <div class="float-tag bl">
+    <div class="float-tag ftag-bl">
       <div class="float-tag-icon" style="background:#fff3ee">📞</div>
       31 new enquiries
     </div>
   </div>
   <div class="hero-mini-stats">
-    <div class="hms-cell"><div class="hms-num"><em>£8.70</em></div><div class="hms-label">Cost per enquiry</div></div>
-    <div class="hms-cell"><div class="hms-num"><em>31</em></div><div class="hms-label">Calls this month</div></div>
+    <div class="hms-cell">
+      <div class="hms-num"><em>£8.70</em></div>
+      <div class="hms-lbl">Cost per enquiry</div>
+    </div>
+    <div class="hms-cell">
+      <div class="hms-num"><em>31</em></div>
+      <div class="hms-lbl">Calls this month</div>
+    </div>
   </div>
 </div>
 ```
@@ -397,7 +439,7 @@ footer{padding:28px 20px;}
   </div>
 </section>
 
-<!-- TICKER -->
+<!-- ═══ TICKER ═══ -->
 
 <div class="ticker-wrap">
   <div class="ticker-track">
@@ -424,7 +466,7 @@ footer{padding:28px 20px;}
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
+<!-- ═══ HOW IT WORKS ═══ -->
 
 <section id="how">
   <div class="how">
@@ -432,7 +474,7 @@ footer{padding:28px 20px;}
       <div class="how-header">
         <div>
           <span class="eyebrow">The Process</span>
-          <h2 style="font-family:'Fraunces',serif;">From zero to <em>leads</em><br>in four steps</h2>
+          <h2>From zero to <em>leads</em><br>in four steps</h2>
         </div>
         <p>Most local businesses have never run Google Ads. Here's exactly what happens when you work with me — no surprises, no black boxes.</p>
       </div>
@@ -462,15 +504,15 @@ footer{padding:28px 20px;}
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ═══ SERVICES ═══ -->
 
 <section id="services">
   <div class="services">
     <div class="services-inner">
       <div class="services-header">
         <div>
-          <span class="eyebrow services-eyebrow">What I Do</span>
-          <h2 style="font-family:'Fraunces',serif;">Simple, honest <em>PPC</em></h2>
+          <span class="eyebrow eyebrow-light">What I Do</span>
+          <h2>Simple, honest <em>PPC</em></h2>
         </div>
         <p>Everything you need to get found on Google and social media. Nothing you don't.</p>
       </div>
@@ -512,23 +554,23 @@ footer{padding:28px 20px;}
   </div>
 </section>
 
-<!-- RESULTS -->
+<!-- ═══ RESULTS ═══ -->
 
 <section id="results">
   <div class="results">
     <div class="results-inner">
       <div class="results-header">
         <span class="eyebrow">Results</span>
-        <h2 style="font-family:'Fraunces',serif;">What good PPC <em>actually</em> looks like</h2>
+        <h2>What good PPC <em>actually</em> looks like</h2>
         <p>Real numbers. Updated as client campaigns build results worth sharing.</p>
       </div>
       <div class="results-grid">
         <div class="result-card">
           <div class="result-tag">Case Study · Local Trades · Yorkshire</div>
           <div class="result-nums">
-            <div class="result-num"><div class="result-num-val o">31</div><div class="result-num-label">Calls/month</div></div>
-            <div class="result-num"><div class="result-num-val">£8.70</div><div class="result-num-label">Per enquiry</div></div>
-            <div class="result-num"><div class="result-num-val">£270</div><div class="result-num-label">Ad spend</div></div>
+            <div class="result-num"><div class="result-num-val o">31</div><div class="result-num-lbl">Calls/month</div></div>
+            <div class="result-num"><div class="result-num-val">£8.70</div><div class="result-num-lbl">Per enquiry</div></div>
+            <div class="result-num"><div class="result-num-val">£270</div><div class="result-num-lbl">Ad spend</div></div>
           </div>
           <div class="result-sector">Google Maps Ads · LS25 area</div>
           <p class="result-desc">A local trades business with no previous online advertising. Google Maps campaign built from scratch — 31 inbound calls in month one at under £9 per enquiry.</p>
@@ -545,14 +587,14 @@ footer{padding:28px 20px;}
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══ ABOUT ═══ -->
 
 <section id="about">
   <div class="about">
     <div class="about-inner">
       <div class="about-body">
         <span class="eyebrow">Who I Am</span>
-        <h2 style="font-family:'Fraunces',serif;">A real person,<br>not an <em>agency</em></h2>
+        <h2>A real person,<br>not an <em>agency</em></h2>
         <p>I'm Jordan — a PPC specialist with over 10 years of hands-on experience managing Google and Meta ad campaigns across competitive industries where every pound of ad spend has to work hard.</p>
         <p>I started The PPC Pal because I kept seeing brilliant local businesses — great reviews, loyal customers — completely invisible online while their competitors got all the calls.</p>
         <ul class="about-list">
@@ -565,9 +607,9 @@ footer{padding:28px 20px;}
       </div>
       <div class="about-right">
         <div class="about-photo">
-          <div class="photo-icon">📸</div>
+          <div class="ph-icon">📸</div>
           <strong>Add a photo of yourself here</strong>
-          <p>A real face builds more trust than any amount of copy. Even a decent phone photo in good light makes a big difference.</p>
+          <p>A real face builds more trust than any amount of copy. Even a decent phone photo makes a big difference.</p>
         </div>
         <div class="about-quote">
           <div class="about-quote-text">"I genuinely love helping local businesses get found. It's the part of this job that never gets old."</div>
@@ -586,47 +628,59 @@ footer{padding:28px 20px;}
           </div>
         </div>
         <div class="about-stats">
-          <div class="about-stat"><div class="about-stat-num">10+</div><div class="about-stat-label">Years PPC experience</div></div>
-          <div class="about-stat"><div class="about-stat-num">£0</div><div class="about-stat-label">Cost of free audit</div></div>
-          <div class="about-stat"><div class="about-stat-num">100%</div><div class="about-stat-label">Transparent reporting</div></div>
-          <div class="about-stat"><div class="about-stat-num">Local</div><div class="about-stat-label">Yorkshire based</div></div>
+          <div class="about-stat"><div class="about-stat-num">10+</div><div class="about-stat-lbl">Years PPC experience</div></div>
+          <div class="about-stat"><div class="about-stat-num">£0</div><div class="about-stat-lbl">Cost of free audit</div></div>
+          <div class="about-stat"><div class="about-stat-num">100%</div><div class="about-stat-lbl">Transparent reporting</div></div>
+          <div class="about-stat"><div class="about-stat-num">Local</div><div class="about-stat-lbl">Yorkshire based</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- ═══ TESTIMONIALS ═══ -->
 
 <section id="testimonials">
   <div class="testimonials">
     <div class="testimonials-inner">
       <div class="testimonials-header">
         <span class="eyebrow">What Clients Say</span>
-        <h2 style="font-family:'Fraunces',serif;">Don't just take <em>my word</em> for it</h2>
+        <h2>Don't just take <em>my word</em> for it</h2>
       </div>
       <div class="testimonials-grid">
         <div class="t-card">
-          <div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div>
-          <div class="t-quote">"Jordan set up our Google Ads and within the first month we had more enquiries than we knew what to do with. Explained everything clearly — no confusing nonsense."</div>
-          <div class="t-footer"><div class="t-name">Client Name</div><div class="t-role">Business Type · Location</div></div>
+          <div class="t-stars">
+            <div class="t-star"></div><div class="t-star"></div><div class="t-star"></div>
+            <div class="t-star"></div><div class="t-star"></div>
+          </div>
+          <div class="t-quote">"Jordan took the time to understand our business properly before doing anything. Everything was explained clearly — no jargon, no confusion. For a first foray into Google Ads it was a genuinely positive experience."</div>
+          <div class="t-footer">
+            <div class="t-name">Michael</div>
+            <div class="t-role">Home Design Centre · Castleford</div>
+          </div>
         </div>
-        <div class="t-ph"><strong>Your testimonial here</strong><p>Replace with a real review from your first client as you collect them.</p></div>
-        <div class="t-ph"><strong>Your testimonial here</strong><p>Even one genuine testimonial outperforms three placeholders.</p></div>
+        <div class="t-ph">
+          <strong>Your testimonial here</strong>
+          <p>Replace with a real review from your first client as you collect them.</p>
+        </div>
+        <div class="t-ph">
+          <strong>Your testimonial here</strong>
+          <p>Even one genuine testimonial outperforms three placeholders.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AUDIT -->
+<!-- ═══ AUDIT ═══ -->
 
 <section id="audit">
   <div class="audit">
     <div class="audit-inner">
       <div class="audit-box">
         <div>
-          <span class="eyebrow audit-eyebrow">Free &amp; No Obligation</span>
-          <h2 style="font-family:'Fraunces',serif;">Find out what you're<br>missing with a <em>free audit</em></h2>
+          <span class="eyebrow" style="color:#f47840">Free &amp; No Obligation</span>
+          <h2>Find out what you're<br>missing with a <em>free audit</em></h2>
           <p>I'll research your business, competitors, and local search landscape — then send you a clear report showing exactly what's possible.</p>
           <ul class="audit-list">
             <li>Are competitors running ads and beating you to enquiries?</li>
@@ -636,7 +690,7 @@ footer{padding:28px 20px;}
           </ul>
         </div>
         <div class="audit-card">
-          <div class="audit-card-title" style="font-family:'Fraunces',serif;">It's completely free.</div>
+          <div class="audit-card-title">It's completely free.</div>
           <div class="audit-card-sub">No catch, no hard sell. Just an honest look at where you stand and what's possible for your business.</div>
           <a href="#contact" class="btn btn-fill" style="display:flex;justify-content:center;width:100%">Request Your Free Audit →</a>
           <div class="audit-card-note">I'll be in touch within 24 hours</div>
@@ -646,34 +700,58 @@ footer{padding:28px 20px;}
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ═══ CONTACT ═══ -->
 
 <section id="contact">
   <div class="contact">
     <div class="contact-inner">
       <div class="contact-left">
         <span class="eyebrow">Get In Touch</span>
-        <h2 style="font-family:'Fraunces',serif;">Let's have<br>a <em>chat</em></h2>
+        <h2>Let's have<br>a <em>chat</em></h2>
         <p>Whether you want a free audit, have a question, or just want to know if this is right for your business — drop me a message. No sales pressure, ever.</p>
         <div class="contact-details">
-          <div class="contact-detail"><div class="cd-icon">✉️</div><div><div class="cd-label">Email</div><div class="cd-val"><a href="mailto:jordan@theppcpal.co.uk">jordan@theppcpal.co.uk</a></div></div></div>
-          <div class="contact-detail"><div class="cd-icon">🌐</div><div><div class="cd-label">Website</div><div class="cd-val"><a href="https://theppcpal.co.uk">theppcpal.co.uk</a></div></div></div>
-          <div class="contact-detail"><div class="cd-icon">📍</div><div><div class="cd-label">Based In</div><div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div></div></div>
-          <div class="contact-detail"><div class="cd-icon">⏱️</div><div><div class="cd-label">Response Time</div><div class="cd-val">Within 24 hours, always</div></div></div>
+          <div class="contact-detail">
+            <div class="cd-icon">✉️</div>
+            <div><div class="cd-lbl">Email</div><div class="cd-val"><a href="/cdn-cgi/l/email-protection#e18b8e9385808fa195898491918291808dcf828ecf948a"><span class="__cf_email__" data-cfemail="3f55504d5b5e517f4b575a4f4f5c4f5e53115c50114a54">[email&#160;protected]</span></a></div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">🌐</div>
+            <div><div class="cd-lbl">Website</div><div class="cd-val"><a href="https://theppcpal.co.uk">theppcpal.co.uk</a></div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">📍</div>
+            <div><div class="cd-lbl">Based In</div><div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">⏱️</div>
+            <div><div class="cd-lbl">Response Time</div><div class="cd-val">Within 24 hours, always</div></div>
+          </div>
         </div>
       </div>
       <form class="contact-form" action="https://formspree.io/f/xwvwpvgb" method="POST">
         <div class="form-row">
-          <div class="form-group"><label for="fname">Your Name</label><input type="text" id="fname" name="name" placeholder="Jane Smith" required/></div>
-          <div class="form-group"><label for="fbusiness">Business Name</label><input type="text" id="fbusiness" name="business" placeholder="Smith's Plumbing"/></div>
+          <div class="form-group">
+            <label for="f-name">Your Name</label>
+            <input type="text" id="f-name" name="name" placeholder="Jane Smith" required/>
+          </div>
+          <div class="form-group">
+            <label for="f-biz">Business Name</label>
+            <input type="text" id="f-biz" name="business" placeholder="Smith's Plumbing"/>
+          </div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label for="femail">Email Address</label><input type="email" id="femail" name="email" placeholder="jane@smithsplumbing.co.uk" required/></div>
-          <div class="form-group"><label for="fphone">Phone Number</label><input type="tel" id="fphone" name="phone" placeholder="07700 900000"/></div>
+          <div class="form-group">
+            <label for="f-email">Email Address</label>
+            <input type="email" id="f-email" name="email" placeholder="jane@smithsplumbing.co.uk" required/>
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone Number</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="07700 900000"/>
+          </div>
         </div>
         <div class="form-group">
-          <label for="finterest">What are you interested in?</label>
-          <select id="finterest" name="interest">
+          <label for="f-interest">What are you interested in?</label>
+          <select id="f-interest" name="interest">
             <option value="">Please select…</option>
             <option value="audit">Free PPC Audit</option>
             <option value="maps">Google Maps Ads</option>
@@ -682,7 +760,10 @@ footer{padding:28px 20px;}
             <option value="general">Just want to find out more</option>
           </select>
         </div>
-        <div class="form-group"><label for="fmessage">Tell me about your business</label><textarea id="fmessage" name="message" placeholder="What do you do, where are you based, and what are you hoping to achieve?"></textarea></div>
+        <div class="form-group">
+          <label for="f-msg">Tell me about your business</label>
+          <textarea id="f-msg" name="message" placeholder="What do you do, where are you based, and what are you hoping to achieve?"></textarea>
+        </div>
         <button type="submit" class="form-submit">Send Message →</button>
         <p class="form-note">🔒 Your details are never shared. I'll only use them to get back to you.</p>
       </form>
@@ -690,12 +771,12 @@ footer{padding:28px 20px;}
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="footer-brand-logo" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="28" height="28" rx="7" fill="#e8520a" opacity="0.9"/>
         <path d="M6 20L9.5 10L13 17L15.5 13L18.5 20" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="20" cy="9" r="2" fill="white"/>
@@ -712,61 +793,62 @@ footer{padding:28px 20px;}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 // ── MOBILE NAV ──
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', function() {
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+var hamburger = document.getElementById(‘hamburger’);
+var mobileNav = document.getElementById(‘mobileNav’);
+
+hamburger.addEventListener(‘click’, function() {
+var isOpen = hamburger.classList.contains(‘open’);
+if (isOpen) {
+hamburger.classList.remove(‘open’);
+mobileNav.classList.remove(‘open’);
+document.body.style.overflow = ‘’;
+} else {
+hamburger.classList.add(‘open’);
+mobileNav.classList.add(‘open’);
+document.body.style.overflow = ‘hidden’;
+}
 });
+
 function closeNav() {
-  hamburger.classList.remove('open');
-  mobileNav.classList.remove('open');
-  document.body.style.overflow = '';
+hamburger.classList.remove(‘open’);
+mobileNav.classList.remove(‘open’);
+document.body.style.overflow = ‘’;
 }
 
-// ── SCROLL-TRIGGERED STEPS ──
-// Highlights whichever step is closest to the centre of the viewport
-// Works in BOTH scroll directions
-var steps = [
-  document.getElementById('step-0'),
-  document.getElementById('step-1'),
-  document.getElementById('step-2'),
-  document.getElementById('step-3')
+// ── SCROLL STEPS ──
+// Highlights the step whose centre is closest to the viewport centre.
+// Works identically scrolling down OR back up.
+var stepEls = [
+document.getElementById(‘step-0’),
+document.getElementById(‘step-1’),
+document.getElementById(‘step-2’),
+document.getElementById(‘step-3’)
 ];
 
-function updateActiveStep() {
-  var viewportCentre = window.innerHeight / 2;
-  var closest = null;
-  var closestDist = Infinity;
+function updateSteps() {
+var mid = window.innerHeight / 2;
+var bestIdx = -1;
+var bestDist = Infinity;
 
-  for (var i = 0; i < steps.length; i++) {
-    if (!steps[i]) continue;
-    var rect = steps[i].getBoundingClientRect();
-    // Only consider steps that are actually on screen
-    if (rect.bottom < 0 || rect.top > window.innerHeight) continue;
-    var stepCentre = rect.top + rect.height / 2;
-    var dist = Math.abs(stepCentre - viewportCentre);
-    if (dist < closestDist) {
-      closestDist = dist;
-      closest = steps[i];
-    }
-  }
-
-  for (var j = 0; j < steps.length; j++) {
-    if (steps[j]) steps[j].classList.remove('active');
-  }
-  if (closest) closest.classList.add('active');
+for (var i = 0; i < stepEls.length; i++) {
+var el = stepEls[i];
+if (!el) continue;
+var r = el.getBoundingClientRect();
+// Only consider elements visible on screen
+if (r.top > window.innerHeight || r.bottom < 0) continue;
+var centre = r.top + (r.height / 2);
+var dist = Math.abs(centre - mid);
+if (dist < bestDist) {
+bestDist = dist;
+bestIdx = i;
+}
 }
 
-window.addEventListener('scroll', updateActiveStep, { passive: true });
-window.addEventListener('resize', updateActiveStep, { passive: true });
-
-// Run on load after a short delay to allow rendering
-setTimeout(updateActiveStep, 100);
-</script>
-
-</body>
-</html>
+for (var j = 0; j < stepEls.length; j++) {
+if (!stepEls[j]) continue;
+if (j === bestIdx) {
+stepEls[j].classList.add(‘active’);
+} else {
