@@ -45,8 +45,28 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .nav-mobile a { text-decoration: none; font-size: 22px; font-family: ‘Fraunces’, serif; font-weight: 700; color: #18171a; padding: 16px 0; border-bottom: 1px solid #e8e4dc; display: block; }
 .nav-mobile a:last-child { border-bottom: none; color: #e8520a; }
 
-/* ── HERO ── */
-.hero { max-width: 1100px; margin: 0 auto; padding: 72px 32px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+/* ── HERO ──
+IMPORTANT: grid-column and grid-row are set explicitly on hero-left and hero-right.
+This means the layout is correct even if stray text nodes (e.g. backtick characters
+from markdown editors) appear as extra grid items. DO NOT remove grid-column/grid-row.
+color: transparent on .hero hides any stray text nodes visually.
+*/
+.hero {
+max-width: 1100px; margin: 0 auto; padding: 72px 32px 80px;
+display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+color: transparent; /* hides stray text nodes from backtick artifacts */
+}
+.hero-left {
+grid-column: 1; grid-row: 1; /* explicit placement — do not remove */
+color: #18171a; /* restore colour for actual content */
+min-width: 0;
+}
+.hero-right {
+grid-column: 2; grid-row: 1; /* explicit placement — do not remove */
+display: flex; flex-direction: column; gap: 14px; min-width: 0;
+}
+
+/* Hero left content */
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #e8520a; margin-bottom: 16px; }
 .hero-eyebrow::before { content: ‘’; width: 6px; height: 6px; background: #e8520a; border-radius: 50%; display: inline-block; animation: blink 2s infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -61,7 +81,6 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .hero-proof-dot { width: 3px; height: 3px; background: #e8e4dc; border-radius: 50%; flex-shrink: 0; }
 
 /* Hero right — campaign card */
-.hero-right { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .hero-card-outer { position: relative; }
 .hero-card { background: #fff; border-radius: 16px; border: 1.5px solid #e8e4dc; padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
 .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
@@ -117,7 +136,6 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .how-header p { font-size: 15px; color: #4a4858; line-height: 1.7; font-weight: 300; }
 .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
 .how-steps::before { content: ‘’; position: absolute; top: 26px; left: calc(12.5% + 13px); right: calc(12.5% + 13px); height: 1.5px; background: #e8e4dc; z-index: 0; }
-/* Progress line — fills orange as steps activate */
 .how-steps::after { content: ‘’; position: absolute; top: 26px; left: calc(12.5% + 13px); height: 1.5px; background: #e8520a; z-index: 0; width: 0; transition: width 0.5s ease; }
 .how-step { padding: 0 16px; position: relative; z-index: 1; }
 .step-num { width: 52px; height: 52px; background: #fff; border: 2px solid #e8e4dc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: ‘Fraunces’, serif; font-size: 21px; font-weight: 900; color: #9590a0; margin-bottom: 20px; transition: background 0.4s, border-color 0.4s, color 0.4s, box-shadow 0.4s; position: relative; z-index: 1; }
@@ -174,7 +192,6 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .about-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; color: #4a4858; }
 .about-list-check { width: 20px; height: 20px; background: #eaf4ee; border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; color: #1e6e45; font-size: 10px; font-weight: 900; }
 .about-right { display: flex; flex-direction: column; gap: 16px; }
-/* Photo */
 .about-photo-wrap { border-radius: 16px; overflow: hidden; background: #faf9f6; }
 .about-photo-img { width: 100%; display: block; mix-blend-mode: multiply; filter: drop-shadow(0 20px 48px rgba(0,0,0,0.18)) drop-shadow(0 4px 12px rgba(0,0,0,0.10)); border-radius: 16px; transition: transform 0.3s; }
 .about-photo-wrap:hover .about-photo-img { transform: scale(1.02); }
@@ -238,13 +255,10 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .cd-val { font-size: 14px; font-weight: 600; color: #18171a; }
 .cd-val a { text-decoration: none; color: #18171a; transition: color 0.2s; }
 .cd-val a:hover { color: #e8520a; }
-
-/* Social links */
 .social-links { display: flex; gap: 10px; margin-top: 4px; }
 .social-link { width: 40px; height: 40px; background: #faf9f6; border: 1.5px solid #e8e4dc; border-radius: 9px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s, border-color 0.2s, transform 0.15s; color: #4a4858; }
 .social-link:hover { background: #e8520a; border-color: #e8520a; color: #fff; transform: translateY(-2px); }
 .social-link svg { width: 18px; height: 18px; fill: currentColor; }
-
 .contact-form { display: flex; flex-direction: column; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-group { display: flex; flex-direction: column; gap: 5px; }
@@ -270,10 +284,10 @@ footer { background: #1a1825; padding: 36px 32px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-.hero { grid-template-columns: 1fr; padding: 48px 24px 56px; gap: 0; }
+.hero { grid-template-columns: 1fr; padding: 48px 24px 56px; gap: 0; color: #18171a; }
+.hero-left { grid-column: 1; grid-row: 1; }
 .hero-right { display: none !important; }
 .how-header, .services-header { grid-template-columns: 1fr; }
-/* On mobile: vertical steps — use centre-of-viewport logic */
 .how-steps { grid-template-columns: 1fr; gap: 28px; }
 .how-steps::before, .how-steps::after { display: none; }
 .how-step { padding: 0; }
@@ -298,8 +312,6 @@ nav { padding: 0 16px; }
 
 </head>
 <body>
-
-<!-- NAV -->
 
 <nav>
   <div class="nav-inner">
@@ -336,107 +348,69 @@ nav { padding: 0 16px; }
   <a href="#contact" onclick="closeNav()">Get in Touch →</a>
 </div>
 
-<!-- HERO — NO MARKDOWN FENCES IN THIS FILE. DO NOT ADD BACKTICKS. -->
-
 <section>
   <div class="hero">
-
-```
-<div class="hero-left">
-  <div class="hero-eyebrow">Based in Sherburn-in-Elmet, Yorkshire</div>
-  <h1>
-    Your competitors<br>
-    aren't running<br>
-    <em>Google Ads.</em><br>
-    <span class="ul">Yet.</span>
-  </h1>
-  <p class="hero-body">No agency. No jargon. Just 10+ years of paid advertising expertise, working for your local business — from someone who actually lives around the corner.</p>
-  <div class="hero-actions">
-    <a href="#audit" class="btn btn-fill">Get Your Free Audit →</a>
-    <a href="#how" class="btn btn-ghost">See How It Works</a>
-  </div>
-  <div class="hero-proof">
-    <span class="hero-proof-item">
-      <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>
-      10+ years experience
-    </span>
-    <span class="hero-proof-dot"></span>
-    <span class="hero-proof-item">
-      <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>
-      No long contracts
-    </span>
-    <span class="hero-proof-dot"></span>
-    <span class="hero-proof-item">
-      <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>
-      Free audit, always
-    </span>
-  </div>
-</div>
-
-<div class="hero-right">
-  <div class="hero-card-outer">
-    <div class="float-tag ftag-tr">
-      <div class="float-tag-icon" style="background:#eaf4ee">📍</div>
-      Targeting LS25 area
+    <div class="hero-left">
+      <div class="hero-eyebrow">Based in Sherburn-in-Elmet, Yorkshire</div>
+      <h1>Your competitors<br>aren't running<br><em>Google Ads.</em><br><span class="ul">Yet.</span></h1>
+      <p class="hero-body">No agency. No jargon. Just 10+ years of paid advertising expertise, working for your local business — from someone who actually lives around the corner.</p>
+      <div class="hero-actions">
+        <a href="#audit" class="btn btn-fill">Get Your Free Audit →</a>
+        <a href="#how" class="btn btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-proof">
+        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>10+ years experience</span>
+        <span class="hero-proof-dot"></span>
+        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>No long contracts</span>
+        <span class="hero-proof-dot"></span>
+        <span class="hero-proof-item"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Free audit, always</span>
+      </div>
     </div>
-    <div class="hero-card">
-      <div class="card-header">
-        <span class="card-head-txt">Campaign Overview</span>
-        <span class="card-badge">● Live</span>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-lbl">Impressions this month</div>
-        <div class="bar-track"><div class="bar-fill bar-78"></div></div>
-        <div class="card-stat-nums"><span>2,847</span><span>↑ 34%</span></div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-lbl">Click-through rate</div>
-        <div class="bar-track"><div class="bar-fill bar-62"></div></div>
-        <div class="card-stat-nums"><span>6.4%</span><span>↑ 12%</span></div>
-      </div>
-      <div class="card-stat">
-        <div class="card-stat-lbl">Calls generated</div>
-        <div class="bar-track"><div class="bar-fill bar-85"></div></div>
-        <div class="card-stat-nums"><span>31 calls</span><span>↑ 58%</span></div>
-      </div>
-      <hr class="card-divider"/>
-      <div class="card-metrics">
-        <div class="card-metric">
-          <div class="card-metric-num">£2.14</div>
-          <div class="card-metric-lbl">Cost per click</div>
+    <div class="hero-right">
+      <div class="hero-card-outer">
+        <div class="float-tag ftag-tr">
+          <div class="float-tag-icon" style="background:#eaf4ee">📍</div>
+          Targeting LS25 area
         </div>
-        <div class="card-metric">
-          <div class="card-metric-num">£8.70</div>
-          <div class="card-metric-lbl">Cost per lead</div>
+        <div class="hero-card">
+          <div class="card-header">
+            <span class="card-head-txt">Campaign Overview</span>
+            <span class="card-badge">● Live</span>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-lbl">Impressions this month</div>
+            <div class="bar-track"><div class="bar-fill bar-78"></div></div>
+            <div class="card-stat-nums"><span>2,847</span><span>↑ 34%</span></div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-lbl">Click-through rate</div>
+            <div class="bar-track"><div class="bar-fill bar-62"></div></div>
+            <div class="card-stat-nums"><span>6.4%</span><span>↑ 12%</span></div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-lbl">Calls generated</div>
+            <div class="bar-track"><div class="bar-fill bar-85"></div></div>
+            <div class="card-stat-nums"><span>31 calls</span><span>↑ 58%</span></div>
+          </div>
+          <hr class="card-divider"/>
+          <div class="card-metrics">
+            <div class="card-metric"><div class="card-metric-num">£2.14</div><div class="card-metric-lbl">Cost per click</div></div>
+            <div class="card-metric"><div class="card-metric-num">£8.70</div><div class="card-metric-lbl">Cost per lead</div></div>
+            <div class="card-metric"><div class="card-metric-num">£270</div><div class="card-metric-lbl">Ad spend</div></div>
+          </div>
         </div>
-        <div class="card-metric">
-          <div class="card-metric-num">£270</div>
-          <div class="card-metric-lbl">Ad spend</div>
+        <div class="float-tag ftag-bl">
+          <div class="float-tag-icon" style="background:#fff3ee">📞</div>
+          31 new enquiries
         </div>
       </div>
+      <div class="hero-mini-stats">
+        <div class="hms-cell"><div class="hms-num"><em>£8.70</em></div><div class="hms-lbl">Cost per enquiry</div></div>
+        <div class="hms-cell"><div class="hms-num"><em>31</em></div><div class="hms-lbl">Calls this month</div></div>
+      </div>
     </div>
-    <div class="float-tag ftag-bl">
-      <div class="float-tag-icon" style="background:#fff3ee">📞</div>
-      31 new enquiries
-    </div>
-  </div>
-  <div class="hero-mini-stats">
-    <div class="hms-cell">
-      <div class="hms-num"><em>£8.70</em></div>
-      <div class="hms-lbl">Cost per enquiry</div>
-    </div>
-    <div class="hms-cell">
-      <div class="hms-num"><em>31</em></div>
-      <div class="hms-lbl">Calls this month</div>
-    </div>
-  </div>
-</div>
-```
-
   </div>
 </section>
-
-<!-- TICKER -->
 
 <div class="ticker-wrap">
   <div class="ticker-track">
@@ -463,8 +437,6 @@ nav { padding: 0 16px; }
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-
 <section id="how">
   <div class="how">
     <div class="how-inner">
@@ -476,82 +448,31 @@ nav { padding: 0 16px; }
         <p>Most local businesses have never run Google Ads. Here's exactly what happens when you work with me — no surprises, no black boxes.</p>
       </div>
       <div class="how-steps" id="howSteps">
-        <div class="how-step" id="step-0">
-          <div class="step-num">1</div>
-          <div class="step-title">Free Audit</div>
-          <p class="step-body">I research your business, your competitors, and your local search landscape. You get a clear PDF showing exactly what's possible — free, no strings attached.</p>
-        </div>
-        <div class="how-step" id="step-1">
-          <div class="step-num">2</div>
-          <div class="step-title">Campaign Setup</div>
-          <p class="step-body">I build your campaigns, write the ad copy, install conversion tracking, and set up call recording. Usually live within a week of starting.</p>
-        </div>
-        <div class="how-step" id="step-2">
-          <div class="step-num">3</div>
-          <div class="step-title">Go Live</div>
-          <p class="step-body">Ads go live. I monitor daily during the first two weeks, optimising bids and keywords based on what the data tells us.</p>
-        </div>
-        <div class="how-step" id="step-3">
-          <div class="step-num">4</div>
-          <div class="step-title">Monthly Report</div>
-          <p class="step-body">A plain-English report every month — calls, clicks, cost per lead, what I changed and why. No dashboards to log into, no jargon to decode.</p>
-        </div>
+        <div class="how-step" id="step-0"><div class="step-num">1</div><div class="step-title">Free Audit</div><p class="step-body">I research your business, your competitors, and your local search landscape. You get a clear PDF showing exactly what's possible — free, no strings attached.</p></div>
+        <div class="how-step" id="step-1"><div class="step-num">2</div><div class="step-title">Campaign Setup</div><p class="step-body">I build your campaigns, write the ad copy, install conversion tracking, and set up call recording. Usually live within a week of starting.</p></div>
+        <div class="how-step" id="step-2"><div class="step-num">3</div><div class="step-title">Go Live</div><p class="step-body">Ads go live. I monitor daily during the first two weeks, optimising bids and keywords based on what the data tells us.</p></div>
+        <div class="how-step" id="step-3"><div class="step-num">4</div><div class="step-title">Monthly Report</div><p class="step-body">A plain-English report every month — calls, clicks, cost per lead, what I changed and why. No dashboards to log into, no jargon to decode.</p></div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- SERVICES -->
 
 <section id="services">
   <div class="services">
     <div class="services-inner">
       <div class="services-header">
-        <div>
-          <span class="eyebrow" style="color:#f47840">What I Do</span>
-          <h2>Simple, honest <em>PPC</em></h2>
-        </div>
+        <div><span class="eyebrow" style="color:#f47840">What I Do</span><h2>Simple, honest <em>PPC</em></h2></div>
         <p>Everything you need to get found on Google and social media. Nothing you don't.</p>
       </div>
       <div class="services-grid">
-        <div class="svc-card">
-          <div class="svc-emoji">🗺️</div>
-          <div>
-            <div class="svc-title">Google Maps Ads</div>
-            <p class="svc-desc">Get into the sponsored spots on Google Maps when people search "near me." Fastest route to local enquiries — no website needed to get started.</p>
-            <span class="svc-tag">Great starting point · No website needed</span>
-          </div>
-        </div>
-        <div class="svc-card">
-          <div class="svc-emoji">🔍</div>
-          <div>
-            <div class="svc-title">Google Search Ads</div>
-            <p class="svc-desc">Appear at the top of Google when someone searches for your service. I handle keywords, copy, bidding, and weekly optimisation. You take the calls.</p>
-            <span class="svc-tag">From £150/month management</span>
-          </div>
-        </div>
-        <div class="svc-card">
-          <div class="svc-emoji">📱</div>
-          <div>
-            <div class="svc-title">Meta (Facebook &amp; Instagram) Ads</div>
-            <p class="svc-desc">Stop-the-scroll creative, hyper-local targeting, lead forms straight to your inbox. Brilliant for visual or lifestyle-driven businesses.</p>
-            <span class="svc-tag">From £150/month management</span>
-          </div>
-        </div>
-        <div class="svc-card">
-          <div class="svc-emoji">📊</div>
-          <div>
-            <div class="svc-title">Monthly Reporting</div>
-            <p class="svc-desc">Clear, honest monthly report. Calls, clicks, cost per lead, what worked, what I'm changing. Plain English — not a dashboard screenshot.</p>
-            <span class="svc-tag">Included with every campaign</span>
-          </div>
-        </div>
+        <div class="svc-card"><div class="svc-emoji">🗺️</div><div><div class="svc-title">Google Maps Ads</div><p class="svc-desc">Get into the sponsored spots on Google Maps when people search "near me." Fastest route to local enquiries — no website needed to get started.</p><span class="svc-tag">Great starting point · No website needed</span></div></div>
+        <div class="svc-card"><div class="svc-emoji">🔍</div><div><div class="svc-title">Google Search Ads</div><p class="svc-desc">Appear at the top of Google when someone searches for your service. I handle keywords, copy, bidding, and weekly optimisation. You take the calls.</p><span class="svc-tag">From £150/month management</span></div></div>
+        <div class="svc-card"><div class="svc-emoji">📱</div><div><div class="svc-title">Meta (Facebook &amp; Instagram) Ads</div><p class="svc-desc">Stop-the-scroll creative, hyper-local targeting, lead forms straight to your inbox. Brilliant for visual or lifestyle-driven businesses.</p><span class="svc-tag">From £150/month management</span></div></div>
+        <div class="svc-card"><div class="svc-emoji">📊</div><div><div class="svc-title">Monthly Reporting</div><p class="svc-desc">Clear, honest monthly report. Calls, clicks, cost per lead, what worked, what I'm changing. Plain English — not a dashboard screenshot.</p><span class="svc-tag">Included with every campaign</span></div></div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- RESULTS -->
 
 <section id="results">
   <div class="results">
@@ -574,17 +495,12 @@ nav { padding: 0 16px; }
         </div>
         <div class="result-placeholder">
           <div class="result-ph-icon">📈</div>
-          <div class="result-ph-text">
-            <strong>More results coming soon</strong>
-            <p>Check back as campaigns build up results worth sharing.</p>
-          </div>
+          <div class="result-ph-text"><strong>More results coming soon</strong><p>Check back as campaigns build up results worth sharing.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ABOUT -->
 
 <section id="about">
   <div class="about">
@@ -633,8 +549,6 @@ nav { padding: 0 16px; }
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-
 <section id="testimonials">
   <div class="testimonials">
     <div class="testimonials-inner">
@@ -644,30 +558,16 @@ nav { padding: 0 16px; }
       </div>
       <div class="testimonials-grid">
         <div class="t-card">
-          <div class="t-stars">
-            <div class="t-star"></div><div class="t-star"></div><div class="t-star"></div>
-            <div class="t-star"></div><div class="t-star"></div>
-          </div>
+          <div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div>
           <div class="t-quote">"Jordan took the time to understand our business properly before doing anything. Everything was explained clearly — no jargon, no confusion. For a first foray into Google Ads it was a genuinely positive experience."</div>
-          <div class="t-footer">
-            <div class="t-name">Michael</div>
-            <div class="t-role">Home Design Centre · Castleford</div>
-          </div>
+          <div class="t-footer"><div class="t-name">Michael</div><div class="t-role">Home Design Centre · Castleford</div></div>
         </div>
-        <div class="t-ph">
-          <strong>Your testimonial here</strong>
-          <p>Replace with a real review from your first client as you collect them.</p>
-        </div>
-        <div class="t-ph">
-          <strong>Your testimonial here</strong>
-          <p>Even one genuine testimonial outperforms three placeholders.</p>
-        </div>
+        <div class="t-ph"><strong>Your testimonial here</strong><p>Replace with a real review from your first client as you collect them.</p></div>
+        <div class="t-ph"><strong>Your testimonial here</strong><p>Even one genuine testimonial outperforms three placeholders.</p></div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- AUDIT -->
 
 <section id="audit">
   <div class="audit">
@@ -695,8 +595,6 @@ nav { padding: 0 16px; }
   </div>
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
   <div class="contact">
     <div class="contact-inner">
@@ -707,24 +605,15 @@ nav { padding: 0 16px; }
         <div class="contact-details">
           <div class="contact-detail">
             <div class="cd-icon">✉️</div>
-            <div>
-              <div class="cd-lbl">Email</div>
-              <div class="cd-val"><a href="mailto:contact@theppcpal.co.uk">contact@theppcpal.co.uk</a></div>
-            </div>
+            <div><div class="cd-lbl">Email</div><div class="cd-val"><a href="mailto:contact@theppcpal.co.uk">contact@theppcpal.co.uk</a></div></div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">📍</div>
-            <div>
-              <div class="cd-lbl">Based In</div>
-              <div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div>
-            </div>
+            <div><div class="cd-lbl">Based In</div><div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div></div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">⏱️</div>
-            <div>
-              <div class="cd-lbl">Response Time</div>
-              <div class="cd-val">Within 24 hours, always</div>
-            </div>
+            <div><div class="cd-lbl">Response Time</div><div class="cd-val">Within 24 hours, always</div></div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">💬</div>
@@ -732,17 +621,14 @@ nav { padding: 0 16px; }
               <div class="cd-lbl">Follow Along</div>
               <div class="cd-val">
                 <div class="social-links">
-                  <!-- Facebook -->
                   <a href="https://www.facebook.com/share/1B8soZbfXZ/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                   </a>
-                  <!-- Instagram -->
                   <a href="https://www.instagram.com/theppcpal?igsh=MXN4eTh6dmI0c3E0MQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                   </a>
-                  <!-- X / Twitter -->
-                  <a href="https://x.com/theppcpal?s=21" target="_blank" rel="noopener" class="social-link" aria-label="X (Twitter)">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                  <a href="https://x.com/theppcpal?s=21" target="_blank" rel="noopener" class="social-link" aria-label="X">
+                    <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
                   </a>
                 </div>
               </div>
@@ -752,24 +638,12 @@ nav { padding: 0 16px; }
       </div>
       <form class="contact-form" action="https://formspree.io/f/xwvwpvgb" method="POST">
         <div class="form-row">
-          <div class="form-group">
-            <label for="f-name">Your Name</label>
-            <input type="text" id="f-name" name="name" placeholder="Jane Smith" required/>
-          </div>
-          <div class="form-group">
-            <label for="f-biz">Business Name</label>
-            <input type="text" id="f-biz" name="business" placeholder="Smith's Plumbing"/>
-          </div>
+          <div class="form-group"><label for="f-name">Your Name</label><input type="text" id="f-name" name="name" placeholder="Jane Smith" required/></div>
+          <div class="form-group"><label for="f-biz">Business Name</label><input type="text" id="f-biz" name="business" placeholder="Smith's Plumbing"/></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label for="f-email">Email Address</label>
-            <input type="email" id="f-email" name="email" placeholder="jane@smithsplumbing.co.uk" required/>
-          </div>
-          <div class="form-group">
-            <label for="f-phone">Phone Number</label>
-            <input type="tel" id="f-phone" name="phone" placeholder="07700 900000"/>
-          </div>
+          <div class="form-group"><label for="f-email">Email Address</label><input type="email" id="f-email" name="email" placeholder="jane@smithsplumbing.co.uk" required/></div>
+          <div class="form-group"><label for="f-phone">Phone Number</label><input type="tel" id="f-phone" name="phone" placeholder="07700 900000"/></div>
         </div>
         <div class="form-group">
           <label for="f-interest">What are you interested in?</label>
@@ -782,18 +656,13 @@ nav { padding: 0 16px; }
             <option value="general">Just want to find out more</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="f-msg">Tell me about your business</label>
-          <textarea id="f-msg" name="message" placeholder="What do you do, where are you based, and what are you hoping to achieve?"></textarea>
-        </div>
+        <div class="form-group"><label for="f-msg">Tell me about your business</label><textarea id="f-msg" name="message" placeholder="What do you do, where are you based, and what are you hoping to achieve?"></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
         <p class="form-note">🔒 Your details are never shared. I'll only use them to get back to you.</p>
       </form>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 
 <footer>
   <div class="footer-inner">
@@ -816,37 +685,14 @@ nav { padding: 0 16px; }
 </footer>
 
 <script>
-// ── MOBILE NAV ──
 var hamburger = document.getElementById('hamburger');
 var mobileNav = document.getElementById('mobileNav');
 hamburger.addEventListener('click', function () {
   var isOpen = mobileNav.classList.contains('open');
-  if (isOpen) {
-    mobileNav.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-  } else {
-    mobileNav.classList.add('open');
-    hamburger.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  if (isOpen) { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
+  else { mobileNav.classList.add('open'); hamburger.classList.add('open'); document.body.style.overflow = 'hidden'; }
 });
-function closeNav() {
-  mobileNav.classList.remove('open');
-  hamburger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// ── STEP HIGHLIGHTING ──
-// Two modes:
-//   DESKTOP (>1024px): all 4 steps visible in a row.
-//     Highlight steps sequentially based on scroll progress through the section.
-//     Step 1 lights when section enters view. Step 4 lights near section bottom.
-//     Progress line fills across between steps.
-//
-//   MOBILE (<=1024px): steps stacked vertically.
-//     Highlight the step whose centre is closest to viewport midpoint.
-//     Works identically scrolling up or down.
+function closeNav() { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
 
 var stepEls = [
   document.getElementById('step-0'),
@@ -856,54 +702,40 @@ var stepEls = [
 ];
 var howSection = document.getElementById('howSteps');
 var howStepsEl = document.querySelector('.how-steps');
+var progressStyle = document.createElement('style');
+document.head.appendChild(progressStyle);
+
+function setActiveUpTo(idx) {
+  for (var j = 0; j < stepEls.length; j++) {
+    if (!stepEls[j]) continue;
+    if (j <= idx) { stepEls[j].classList.add('active'); }
+    else { stepEls[j].classList.remove('active'); }
+  }
+  var lineWidths = ['0%', '33%', '66%', '100%'];
+  var pct = idx < 0 ? '0%' : (lineWidths[idx] || '0%');
+  progressStyle.textContent = '.how-steps::after { width: calc(' + pct + ' * 0.75) !important; }';
+}
 
 function setActiveStep(idx) {
   for (var j = 0; j < stepEls.length; j++) {
     if (!stepEls[j]) continue;
-    if (j === idx) {
-      stepEls[j].classList.add('active');
-    } else {
-      stepEls[j].classList.remove('active');
-    }
-  }
-}
-
-function setActiveUpTo(idx) {
-  // Lights all steps up to and including idx (cumulative for desktop)
-  for (var j = 0; j < stepEls.length; j++) {
-    if (!stepEls[j]) continue;
-    if (j <= idx) {
-      stepEls[j].classList.add('active');
-    } else {
-      stepEls[j].classList.remove('active');
-    }
-  }
-  // Update progress line width
-  if (howStepsEl) {
-    var lineWidths = ['0%', '33%', '66%', '100%'];
-    howStepsEl.style.setProperty('--progress', lineWidths[idx] || '0%');
+    if (j === idx) { stepEls[j].classList.add('active'); }
+    else { stepEls[j].classList.remove('active'); }
   }
 }
 
 function updateStepsDesktop() {
   if (!howSection) return;
   var r = howSection.getBoundingClientRect();
-  var sectionH = r.height;
   var viewH = window.innerHeight;
-
-  // How far the section has scrolled into view
-  // 0 = top of section at bottom of viewport
-  // 1 = top of section at top of viewport (section fully past)
+  var sectionH = r.height;
   var scrolled = (viewH - r.top) / (viewH + sectionH);
   scrolled = Math.max(0, Math.min(1, scrolled));
-
-  // Divide scroll range into 4 bands
   var idx = -1;
-  if (scrolled >= 0.1) idx = 0;
-  if (scrolled >= 0.35) idx = 1;
-  if (scrolled >= 0.6) idx = 2;
-  if (scrolled >= 0.8) idx = 3;
-
+  if (scrolled >= 0.05) idx = 0;
+  if (scrolled >= 0.22) idx = 1;
+  if (scrolled >= 0.38) idx = 2;  /* earlier than before */
+  if (scrolled >= 0.52) idx = 3;  /* earlier than before */
   setActiveUpTo(idx);
 }
 
@@ -925,30 +757,9 @@ function updateStepsMobile() {
 }
 
 function updateSteps() {
-  if (window.innerWidth > 1024) {
-    updateStepsDesktop();
-  } else {
-    updateStepsMobile();
-  }
+  if (window.innerWidth > 1024) { updateStepsDesktop(); }
+  else { updateStepsMobile(); }
 }
-
-// Apply progress line via CSS custom property
-if (howStepsEl) {
-  howStepsEl.style.cssText += '; ';
-}
-
-// Override the ::after pseudo-element width via inline style trick
-// We update a data attribute and use attr() — not widely supported,
-// so instead we inject a style tag and update it dynamically.
-var progressStyle = document.createElement('style');
-document.head.appendChild(progressStyle);
-
-var origSetActiveUpTo = setActiveUpTo;
-setActiveUpTo = function(idx) {
-  origSetActiveUpTo(idx);
-  var pct = idx < 0 ? '0%' : (['0%','33%','66%','100%'][idx] || '0%');
-  progressStyle.textContent = '.how-steps::after { width: calc(' + pct + ' * (100% - 25%)) !important; }';
-};
 
 window.addEventListener('scroll', updateSteps, { passive: true });
 window.addEventListener('touchmove', updateSteps, { passive: true });
