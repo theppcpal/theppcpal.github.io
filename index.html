@@ -60,7 +60,7 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .hero-proof-item svg { width: 13px; height: 13px; stroke: #1e6e45; stroke-width: 2.5; fill: none; flex-shrink: 0; }
 .hero-proof-dot { width: 3px; height: 3px; background: #e8e4dc; border-radius: 50%; flex-shrink: 0; }
 
-/* Hero right */
+/* Hero right — campaign card */
 .hero-right { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .hero-card-outer { position: relative; }
 .hero-card { background: #fff; border-radius: 16px; border: 1.5px solid #e8e4dc; padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
@@ -117,6 +117,8 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .how-header p { font-size: 15px; color: #4a4858; line-height: 1.7; font-weight: 300; }
 .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
 .how-steps::before { content: ‘’; position: absolute; top: 26px; left: calc(12.5% + 13px); right: calc(12.5% + 13px); height: 1.5px; background: #e8e4dc; z-index: 0; }
+/* Progress line — fills orange as steps activate */
+.how-steps::after { content: ‘’; position: absolute; top: 26px; left: calc(12.5% + 13px); height: 1.5px; background: #e8520a; z-index: 0; width: 0; transition: width 0.5s ease; }
 .how-step { padding: 0 16px; position: relative; z-index: 1; }
 .step-num { width: 52px; height: 52px; background: #fff; border: 2px solid #e8e4dc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: ‘Fraunces’, serif; font-size: 21px; font-weight: 900; color: #9590a0; margin-bottom: 20px; transition: background 0.4s, border-color 0.4s, color 0.4s, box-shadow 0.4s; position: relative; z-index: 1; }
 .how-step.active .step-num { background: #e8520a; border-color: #e8520a; color: #fff; box-shadow: 0 0 0 6px rgba(232,82,10,0.12); }
@@ -172,29 +174,10 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .about-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; color: #4a4858; }
 .about-list-check { width: 20px; height: 20px; background: #eaf4ee; border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; color: #1e6e45; font-size: 10px; font-weight: 900; }
 .about-right { display: flex; flex-direction: column; gap: 16px; }
-
-/* Photo styling */
-.about-photo-wrap {
-border-radius: 16px;
-overflow: hidden;
-background: #faf9f6;
-position: relative;
-/* Clip to the rounded corners */
-}
-.about-photo-img {
-width: 100%;
-display: block;
-/* mix-blend-mode makes the white/light background transparent */
-mix-blend-mode: multiply;
-/* drop-shadow follows the subject shape, not the box */
-filter: drop-shadow(0 20px 48px rgba(0,0,0,0.18)) drop-shadow(0 4px 12px rgba(0,0,0,0.10));
-border-radius: 16px;
-transition: transform 0.3s;
-}
-.about-photo-wrap:hover .about-photo-img {
-transform: scale(1.02);
-}
-
+/* Photo */
+.about-photo-wrap { border-radius: 16px; overflow: hidden; background: #faf9f6; }
+.about-photo-img { width: 100%; display: block; mix-blend-mode: multiply; filter: drop-shadow(0 20px 48px rgba(0,0,0,0.18)) drop-shadow(0 4px 12px rgba(0,0,0,0.10)); border-radius: 16px; transition: transform 0.3s; }
+.about-photo-wrap:hover .about-photo-img { transform: scale(1.02); }
 .about-quote { background: #1a1825; border-radius: 14px; padding: 24px 26px; }
 .about-quote-text { font-family: ‘Fraunces’, serif; font-size: 17px; font-style: italic; color: #fff; line-height: 1.5; margin-bottom: 16px; }
 .about-quote-sig { display: flex; align-items: center; gap: 10px; }
@@ -255,6 +238,13 @@ transform: scale(1.02);
 .cd-val { font-size: 14px; font-weight: 600; color: #18171a; }
 .cd-val a { text-decoration: none; color: #18171a; transition: color 0.2s; }
 .cd-val a:hover { color: #e8520a; }
+
+/* Social links */
+.social-links { display: flex; gap: 10px; margin-top: 4px; }
+.social-link { width: 40px; height: 40px; background: #faf9f6; border: 1.5px solid #e8e4dc; border-radius: 9px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s, border-color 0.2s, transform 0.15s; color: #4a4858; }
+.social-link:hover { background: #e8520a; border-color: #e8520a; color: #fff; transform: translateY(-2px); }
+.social-link svg { width: 18px; height: 18px; fill: currentColor; }
+
 .contact-form { display: flex; flex-direction: column; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-group { display: flex; flex-direction: column; gap: 5px; }
@@ -283,8 +273,9 @@ footer { background: #1a1825; padding: 36px 32px; }
 .hero { grid-template-columns: 1fr; padding: 48px 24px 56px; gap: 0; }
 .hero-right { display: none !important; }
 .how-header, .services-header { grid-template-columns: 1fr; }
+/* On mobile: vertical steps — use centre-of-viewport logic */
 .how-steps { grid-template-columns: 1fr; gap: 28px; }
-.how-steps::before { display: none; }
+.how-steps::before, .how-steps::after { display: none; }
 .how-step { padding: 0; }
 .services-grid, .results-grid, .testimonials-grid { grid-template-columns: 1fr; }
 .about-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -345,7 +336,7 @@ nav { padding: 0 16px; }
   <a href="#contact" onclick="closeNav()">Get in Touch →</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO — NO MARKDOWN FENCES IN THIS FILE. DO NOT ADD BACKTICKS. -->
 
 <section>
   <div class="hero">
@@ -612,13 +603,8 @@ nav { padding: 0 16px; }
         </ul>
       </div>
       <div class="about-right">
-        <!-- Photo with CSS background removal + depth shadow -->
         <div class="about-photo-wrap">
-          <img
-            src="jordan.png"
-            alt="Jordan, The PPC Pal"
-            class="about-photo-img"
-          />
+          <img src="jordan.jpg" alt="Jordan, The PPC Pal" class="about-photo-img"/>
         </div>
         <div class="about-quote">
           <div class="about-quote-text">"I genuinely love helping local businesses get found. It's the part of this job that never gets old."</div>
@@ -721,19 +707,46 @@ nav { padding: 0 16px; }
         <div class="contact-details">
           <div class="contact-detail">
             <div class="cd-icon">✉️</div>
-            <div><div class="cd-lbl">Email</div><div class="cd-val"><a href="mailto:contact@theppcpal.co.uk">contact@theppcpal.co.uk</a></div></div>
-          </div>
-          <div class="contact-detail">
-            <div class="cd-icon">🌐</div>
-            <div><div class="cd-lbl">Website</div><div class="cd-val"><a href="https://theppcpal.co.uk">theppcpal.co.uk</a></div></div>
+            <div>
+              <div class="cd-lbl">Email</div>
+              <div class="cd-val"><a href="mailto:jordan@theppcpal.co.uk">jordan@theppcpal.co.uk</a></div>
+            </div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">📍</div>
-            <div><div class="cd-lbl">Based In</div><div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div></div>
+            <div>
+              <div class="cd-lbl">Based In</div>
+              <div class="cd-val">Sherburn-in-Elmet, North Yorkshire</div>
+            </div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">⏱️</div>
-            <div><div class="cd-lbl">Response Time</div><div class="cd-val">Within 24 hours, always</div></div>
+            <div>
+              <div class="cd-lbl">Response Time</div>
+              <div class="cd-val">Within 24 hours, always</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">💬</div>
+            <div>
+              <div class="cd-lbl">Follow Along</div>
+              <div class="cd-val">
+                <div class="social-links">
+                  <!-- Facebook -->
+                  <a href="https://www.facebook.com/share/1B8soZbfXZ/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <!-- Instagram -->
+                  <a href="https://www.instagram.com/theppcpal?igsh=MXN4eTh6dmI0c3E0MQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <!-- X / Twitter -->
+                  <a href="https://x.com/theppcpal?s=21" target="_blank" rel="noopener" class="social-link" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -803,9 +816,9 @@ nav { padding: 0 16px; }
 </footer>
 
 <script>
+// ── MOBILE NAV ──
 var hamburger = document.getElementById('hamburger');
 var mobileNav = document.getElementById('mobileNav');
-
 hamburger.addEventListener('click', function () {
   var isOpen = mobileNav.classList.contains('open');
   if (isOpen) {
@@ -818,12 +831,22 @@ hamburger.addEventListener('click', function () {
     document.body.style.overflow = 'hidden';
   }
 });
-
 function closeNav() {
   mobileNav.classList.remove('open');
   hamburger.classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// ── STEP HIGHLIGHTING ──
+// Two modes:
+//   DESKTOP (>1024px): all 4 steps visible in a row.
+//     Highlight steps sequentially based on scroll progress through the section.
+//     Step 1 lights when section enters view. Step 4 lights near section bottom.
+//     Progress line fills across between steps.
+//
+//   MOBILE (<=1024px): steps stacked vertically.
+//     Highlight the step whose centre is closest to viewport midpoint.
+//     Works identically scrolling up or down.
 
 var stepEls = [
   document.getElementById('step-0'),
@@ -831,8 +854,61 @@ var stepEls = [
   document.getElementById('step-2'),
   document.getElementById('step-3')
 ];
+var howSection = document.getElementById('howSteps');
+var howStepsEl = document.querySelector('.how-steps');
 
-function updateSteps() {
+function setActiveStep(idx) {
+  for (var j = 0; j < stepEls.length; j++) {
+    if (!stepEls[j]) continue;
+    if (j === idx) {
+      stepEls[j].classList.add('active');
+    } else {
+      stepEls[j].classList.remove('active');
+    }
+  }
+}
+
+function setActiveUpTo(idx) {
+  // Lights all steps up to and including idx (cumulative for desktop)
+  for (var j = 0; j < stepEls.length; j++) {
+    if (!stepEls[j]) continue;
+    if (j <= idx) {
+      stepEls[j].classList.add('active');
+    } else {
+      stepEls[j].classList.remove('active');
+    }
+  }
+  // Update progress line width
+  if (howStepsEl) {
+    var lineWidths = ['0%', '33%', '66%', '100%'];
+    howStepsEl.style.setProperty('--progress', lineWidths[idx] || '0%');
+  }
+}
+
+function updateStepsDesktop() {
+  if (!howSection) return;
+  var r = howSection.getBoundingClientRect();
+  var sectionH = r.height;
+  var viewH = window.innerHeight;
+
+  // How far the section has scrolled into view
+  // 0 = top of section at bottom of viewport
+  // 1 = top of section at top of viewport (section fully past)
+  var scrolled = (viewH - r.top) / (viewH + sectionH);
+  scrolled = Math.max(0, Math.min(1, scrolled));
+
+  // Divide scroll range into 4 bands
+  var idx = -1;
+  if (scrolled >= 0.1) idx = 0;
+  if (scrolled >= 0.35) idx = 1;
+  if (scrolled >= 0.6) idx = 2;
+  if (scrolled >= 0.8) idx = 3;
+
+  setActiveUpTo(idx);
+}
+
+function updateStepsMobile() {
+  if (!howSection) return;
   var mid = window.innerHeight / 2;
   var bestIdx = -1;
   var bestDist = Infinity;
@@ -845,12 +921,34 @@ function updateSteps() {
     var dist = Math.abs(centre - mid);
     if (dist < bestDist) { bestDist = dist; bestIdx = i; }
   }
-  for (var j = 0; j < stepEls.length; j++) {
-    if (!stepEls[j]) continue;
-    if (j === bestIdx) { stepEls[j].classList.add('active'); }
-    else { stepEls[j].classList.remove('active'); }
+  setActiveStep(bestIdx);
+}
+
+function updateSteps() {
+  if (window.innerWidth > 1024) {
+    updateStepsDesktop();
+  } else {
+    updateStepsMobile();
   }
 }
+
+// Apply progress line via CSS custom property
+if (howStepsEl) {
+  howStepsEl.style.cssText += '; ';
+}
+
+// Override the ::after pseudo-element width via inline style trick
+// We update a data attribute and use attr() — not widely supported,
+// so instead we inject a style tag and update it dynamically.
+var progressStyle = document.createElement('style');
+document.head.appendChild(progressStyle);
+
+var origSetActiveUpTo = setActiveUpTo;
+setActiveUpTo = function(idx) {
+  origSetActiveUpTo(idx);
+  var pct = idx < 0 ? '0%' : (['0%','33%','66%','100%'][idx] || '0%');
+  progressStyle.textContent = '.how-steps::after { width: calc(' + pct + ' * (100% - 25%)) !important; }';
+};
 
 window.addEventListener('scroll', updateSteps, { passive: true });
 window.addEventListener('touchmove', updateSteps, { passive: true });
