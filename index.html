@@ -8,14 +8,12 @@
 <meta name="description" content="Friendly, no-nonsense Google Ads and Meta Ads management for local businesses across North & West Yorkshire. Get a free audit today."/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-/* ── RESET ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: 'Plus Jakarta Sans', sans-serif; background: #faf9f6; color: #18171a; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
-/* ── BUTTONS ── */
 .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 10px; transition: transform 0.15s, background 0.2s, border-color 0.2s, color 0.2s; cursor: pointer; border: none; font-family: inherit; letter-spacing: 0.2px; }
 .btn:hover { transform: translateY(-2px); }
 .btn-fill { background: #e8520a; color: #fff; padding: 14px 26px; }
@@ -23,7 +21,6 @@ a { color: inherit; }
 .btn-ghost { background: transparent; color: #18171a; padding: 13px 24px; border: 1.5px solid #e8e4dc; }
 .btn-ghost:hover { border-color: #e8520a; color: #e8520a; }
 
-/* ── NAV ── */
 nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #e8e4dc; padding: 0 32px; }
 .nav-inner { max-width: 1100px; margin: 0 auto; height: 66px; display: flex; align-items: center; justify-content: space-between; }
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -45,28 +42,11 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(250,249,246,0.96)
 .nav-mobile a { text-decoration: none; font-size: 22px; font-family: ‘Fraunces’, serif; font-weight: 700; color: #18171a; padding: 16px 0; border-bottom: 1px solid #e8e4dc; display: block; }
 .nav-mobile a:last-child { border-bottom: none; color: #e8520a; }
 
-/* ── HERO ──
-IMPORTANT: grid-column and grid-row are set explicitly on hero-left and hero-right.
-This means the layout is correct even if stray text nodes (e.g. backtick characters
-from markdown editors) appear as extra grid items. DO NOT remove grid-column/grid-row.
-color: transparent on .hero hides any stray text nodes visually.
-*/
-.hero {
-max-width: 1100px; margin: 0 auto; padding: 72px 32px 80px;
-display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
-color: transparent; /* hides stray text nodes from backtick artifacts */
-}
-.hero-left {
-grid-column: 1; grid-row: 1; /* explicit placement — do not remove */
-color: #18171a; /* restore colour for actual content */
-min-width: 0;
-}
-.hero-right {
-grid-column: 2; grid-row: 1; /* explicit placement — do not remove */
-display: flex; flex-direction: column; gap: 14px; min-width: 0;
-}
+/* HERO — explicit grid placement prevents backtick artifacts shifting layout */
+.hero { max-width: 1100px; margin: 0 auto; padding: 72px 32px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; color: transparent; }
+.hero-left { grid-column: 1; grid-row: 1; color: #18171a; min-width: 0; }
+.hero-right { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 
-/* Hero left content */
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #e8520a; margin-bottom: 16px; }
 .hero-eyebrow::before { content: ‘’; width: 6px; height: 6px; background: #e8520a; border-radius: 50%; display: inline-block; animation: blink 2s infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -80,7 +60,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .hero-proof-item svg { width: 13px; height: 13px; stroke: #1e6e45; stroke-width: 2.5; fill: none; flex-shrink: 0; }
 .hero-proof-dot { width: 3px; height: 3px; background: #e8e4dc; border-radius: 50%; flex-shrink: 0; }
 
-/* Hero right — campaign card */
 .hero-card-outer { position: relative; }
 .hero-card { background: #fff; border-radius: 16px; border: 1.5px solid #e8e4dc; padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
 .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
@@ -112,7 +91,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .hms-num em { font-style: normal; color: #f47840; }
 .hms-lbl { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 500; }
 
-/* ── TICKER ── */
 .ticker-wrap { background: #fff; border-top: 1px solid #e8e4dc; border-bottom: 1px solid #e8e4dc; overflow: hidden; position: relative; }
 .ticker-wrap::before, .ticker-wrap::after { content: ‘’; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
 .ticker-wrap::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
@@ -124,10 +102,11 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .ticker-item:hover { color: #e8520a; }
 .ticker-icon { width: 28px; height: 28px; background: #fff3ee; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
 
-/* ── EYEBROW ── */
 .eyebrow { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #e8520a; margin-bottom: 12px; }
 
-/* ── HOW IT WORKS ── */
+/* “(Pay Per Click)” annotation — smaller, italic, muted, not full heading weight */
+.ppc-abbr { font-size: 0.58em; font-style: italic; font-weight: 400; color: rgba(255,255,255,0.45); letter-spacing: 0; vertical-align: middle; }
+
 .how { padding: 96px 32px; background: #faf9f6; }
 .how-inner { max-width: 1100px; margin: 0 auto; }
 .how-header { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-bottom: 64px; }
@@ -144,7 +123,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .how-step.active .step-title { color: #e8520a; }
 .step-body { font-size: 13px; color: #4a4858; line-height: 1.65; font-weight: 300; }
 
-/* ── SERVICES ── */
 .services { background: #1a1825; padding: 96px 32px; }
 .services-inner { max-width: 1100px; margin: 0 auto; }
 .services-header { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-bottom: 48px; }
@@ -160,7 +138,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .svc-desc { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.65; font-weight: 300; margin-bottom: 14px; }
 .svc-tag { display: inline-block; background: rgba(232,82,10,0.15); color: #f47840; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; }
 
-/* ── RESULTS ── */
 .results { padding: 96px 32px; background: #f3f1ec; }
 .results-inner { max-width: 1100px; margin: 0 auto; }
 .results-header { text-align: center; margin-bottom: 48px; }
@@ -182,7 +159,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .result-ph-text strong { display: block; font-size: 14px; color: #4a4858; margin-bottom: 6px; }
 .result-ph-text p { font-size: 12.5px; color: #9590a0; line-height: 1.6; }
 
-/* ── ABOUT ── */
 .about { padding: 96px 32px; background: #fff; }
 .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-body h2 { font-family: ‘Fraunces’, serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 900; line-height: 1.08; letter-spacing: -0.8px; color: #18171a; margin-bottom: 20px; }
@@ -207,7 +183,19 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .about-stat-num { font-family: ‘Fraunces’, serif; font-size: 22px; font-weight: 900; color: #e8520a; line-height: 1; margin-bottom: 3px; }
 .about-stat-lbl { font-size: 10px; color: #9590a0; font-weight: 600; line-height: 1.3; }
 
-/* ── TESTIMONIALS ── */
+/* Certification badge strip */
+.cert-strip {
+display: flex; align-items: center; gap: 16px;
+padding: 16px 20px;
+background: #faf9f6; border: 1.5px solid #e8e4dc;
+border-radius: 12px;
+}
+.cert-badge-img { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+.cert-text-group {}
+.cert-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #9590a0; font-weight: 700; margin-bottom: 2px; }
+.cert-title { font-family: ‘Fraunces’, serif; font-size: 15px; font-weight: 700; color: #18171a; line-height: 1.2; }
+.cert-sub { font-size: 11px; color: #9590a0; margin-top: 2px; }
+
 .testimonials { padding: 96px 32px; background: #faf9f6; }
 .testimonials-inner { max-width: 1100px; margin: 0 auto; }
 .testimonials-header { margin-bottom: 40px; }
@@ -226,7 +214,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .t-ph strong { font-size: 13px; color: #4a4858; }
 .t-ph p { font-size: 12px; color: #9590a0; line-height: 1.5; }
 
-/* ── AUDIT ── */
 .audit { padding: 96px 32px; background: #f3f1ec; }
 .audit-inner { max-width: 1100px; margin: 0 auto; }
 .audit-box { background: #18171a; border-radius: 24px; padding: 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; position: relative; overflow: hidden; }
@@ -242,7 +229,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .audit-card-sub { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 24px; font-weight: 300; line-height: 1.5; }
 .audit-card-note { font-size: 11px; color: rgba(255,255,255,0.2); text-align: center; margin-top: 12px; }
 
-/* ── CONTACT ── */
 .contact { padding: 96px 32px; background: #fff; border-top: 1px solid #e8e4dc; }
 .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
 .contact-left h2 { font-family: ‘Fraunces’, serif; font-size: clamp(26px, 3vw, 40px); font-weight: 900; line-height: 1.1; letter-spacing: -0.8px; color: #18171a; margin-top: 12px; margin-bottom: 16px; }
@@ -271,7 +257,6 @@ display: flex; flex-direction: column; gap: 14px; min-width: 0;
 .form-submit:hover { background: #c94508; transform: translateY(-1px); }
 .form-note { font-size: 11.5px; color: #9590a0; text-align: center; margin-top: 4px; }
 
-/* ── FOOTER ── */
 footer { background: #1a1825; padding: 36px 32px; }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 .footer-brand { display: flex; align-items: center; gap: 10px; }
@@ -282,7 +267,6 @@ footer { background: #1a1825; padding: 36px 32px; }
 .footer-links a { text-decoration: none; color: rgba(255,255,255,0.25); font-size: 12px; transition: color 0.2s; }
 .footer-links a:hover { color: rgba(255,255,255,0.6); }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
 .hero { grid-template-columns: 1fr; padding: 48px 24px 56px; gap: 0; color: #18171a; }
 .hero-left { grid-column: 1; grid-row: 1; }
@@ -461,7 +445,11 @@ nav { padding: 0 16px; }
   <div class="services">
     <div class="services-inner">
       <div class="services-header">
-        <div><span class="eyebrow" style="color:#f47840">What I Do</span><h2>Simple, honest <em>PPC (Pay Per Click)</em></h2></div>
+        <div>
+          <span class="eyebrow" style="color:#f47840">What I Do</span>
+          <!-- PPC abbreviation: same italic/colour as em, but noticeably smaller — reads as a helpful aside not a title word -->
+          <h2>Simple, honest <em>PPC <span class="ppc-abbr">(Pay Per Click)</span></em></h2>
+        </div>
         <p>Everything you need to get found on Google and social media. Nothing you don't.</p>
       </div>
       <div class="services-grid">
@@ -543,6 +531,15 @@ nav { padding: 0 16px; }
           <div class="about-stat"><div class="about-stat-num">£0</div><div class="about-stat-lbl">Cost of free audit</div></div>
           <div class="about-stat"><div class="about-stat-num">100%</div><div class="about-stat-lbl">Transparent reporting</div></div>
           <div class="about-stat"><div class="about-stat-num">Local</div><div class="about-stat-lbl">Yorkshire based</div></div>
+        </div>
+        <!-- Google Ads certification badge — upload google-ads-search-certified.png to repo root -->
+        <div class="cert-strip">
+          <img src="google-ads-search-certified.png" alt="Google Ads Search Certified" class="cert-badge-img"/>
+          <div class="cert-text-group">
+            <div class="cert-label">Certification</div>
+            <div class="cert-title">Google Ads Search Certified</div>
+            <div class="cert-sub">Certified by Google · Verified expertise</div>
+          </div>
         </div>
       </div>
     </div>
@@ -694,73 +691,53 @@ hamburger.addEventListener('click', function () {
 });
 function closeNav() { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
 
-var stepEls = [
-  document.getElementById('step-0'),
-  document.getElementById('step-1'),
-  document.getElementById('step-2'),
-  document.getElementById('step-3')
-];
+var stepEls = [document.getElementById('step-0'),document.getElementById('step-1'),document.getElementById('step-2'),document.getElementById('step-3')];
 var howSection = document.getElementById('howSteps');
-var howStepsEl = document.querySelector('.how-steps');
 var progressStyle = document.createElement('style');
 document.head.appendChild(progressStyle);
 
 function setActiveUpTo(idx) {
   for (var j = 0; j < stepEls.length; j++) {
     if (!stepEls[j]) continue;
-    if (j <= idx) { stepEls[j].classList.add('active'); }
-    else { stepEls[j].classList.remove('active'); }
+    if (j <= idx) { stepEls[j].classList.add('active'); } else { stepEls[j].classList.remove('active'); }
   }
-  var lineWidths = ['0%', '33%', '66%', '100%'];
-  var pct = idx < 0 ? '0%' : (lineWidths[idx] || '0%');
+  var pct = idx < 0 ? '0%' : (['0%','33%','66%','100%'][idx] || '0%');
   progressStyle.textContent = '.how-steps::after { width: calc(' + pct + ' * 0.75) !important; }';
 }
-
 function setActiveStep(idx) {
   for (var j = 0; j < stepEls.length; j++) {
     if (!stepEls[j]) continue;
-    if (j === idx) { stepEls[j].classList.add('active'); }
-    else { stepEls[j].classList.remove('active'); }
+    if (j === idx) { stepEls[j].classList.add('active'); } else { stepEls[j].classList.remove('active'); }
   }
 }
-
 function updateStepsDesktop() {
   if (!howSection) return;
   var r = howSection.getBoundingClientRect();
-  var viewH = window.innerHeight;
-  var sectionH = r.height;
-  var scrolled = (viewH - r.top) / (viewH + sectionH);
+  var scrolled = (window.innerHeight - r.top) / (window.innerHeight + r.height);
   scrolled = Math.max(0, Math.min(1, scrolled));
   var idx = -1;
   if (scrolled >= 0.05) idx = 0;
   if (scrolled >= 0.22) idx = 1;
-  if (scrolled >= 0.38) idx = 2;  /* earlier than before */
-  if (scrolled >= 0.52) idx = 3;  /* earlier than before */
+  if (scrolled >= 0.38) idx = 2;
+  if (scrolled >= 0.52) idx = 3;
   setActiveUpTo(idx);
 }
-
 function updateStepsMobile() {
   if (!howSection) return;
   var mid = window.innerHeight / 2;
-  var bestIdx = -1;
-  var bestDist = Infinity;
+  var bestIdx = -1; var bestDist = Infinity;
   for (var i = 0; i < stepEls.length; i++) {
-    var el = stepEls[i];
-    if (!el) continue;
+    var el = stepEls[i]; if (!el) continue;
     var r = el.getBoundingClientRect();
     if (r.bottom < 0 || r.top > window.innerHeight) continue;
-    var centre = r.top + r.height / 2;
-    var dist = Math.abs(centre - mid);
+    var dist = Math.abs(r.top + r.height / 2 - mid);
     if (dist < bestDist) { bestDist = dist; bestIdx = i; }
   }
   setActiveStep(bestIdx);
 }
-
 function updateSteps() {
-  if (window.innerWidth > 1024) { updateStepsDesktop(); }
-  else { updateStepsMobile(); }
+  if (window.innerWidth > 1024) { updateStepsDesktop(); } else { updateStepsMobile(); }
 }
-
 window.addEventListener('scroll', updateSteps, { passive: true });
 window.addEventListener('touchmove', updateSteps, { passive: true });
 window.addEventListener('resize', updateSteps, { passive: true });
