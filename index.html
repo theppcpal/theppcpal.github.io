@@ -33,7 +33,7 @@
 
 <!-- ══════════════════════════════════════════════════════════
   GOOGLE TAG MANAGER
-  Replace GTM-WZ57Z5P4 with your actual GTM container ID.
+  Replace GTM-XXXXXXX with your actual GTM container ID.
   Find this at tagmanager.google.com → your container → Admin → Install GTM.
   This snippet must stay in <head> — it initialises consent mode
   BEFORE GTM loads, which is required for GDPR compliance.
@@ -53,13 +53,13 @@ gtag('consent', 'default', {
 });
 </script>
 
-<!-- GTM head snippet — replace GTM-WZ57Z5P4 -->
+<!-- GTM head snippet — replace GTM-XXXXXXX -->
 
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WZ57Z5P4');</script>
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
 
 <!-- End GTM head snippet -->
 
@@ -379,9 +379,9 @@ footer { background: #1a1825; padding: 36px 32px; }
 </head>
 <body>
 
-<!-- GTM body snippet — replace GTM-WZ57Z5P4 — must be immediately after <body> tag -->
+<!-- GTM body snippet — replace GTM-XXXXXXX — must be immediately after <body> tag -->
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ57Z5P4"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End GTM body snippet -->
@@ -397,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="cookie-banner-content">
     <div class="cookie-banner-title">Your privacy</div>
     <div class="cookie-banner-text">
-      We use cookies to understand how visitors use this site (Google Analytics) and to measure the performance of our advertising. No data is shared or sold. You can accept, decline, or read our <a href="/privacy.html">Privacy Policy</a>.
+      We use cookies to understand how visitors use this site (Google Analytics) and to measure the performance of our advertising. No data is shared or sold. You can accept, decline, or read our <a href="/cookie-policy.html">Cookie Policy</a>.
     </div>
   </div>
   <div class="cookie-banner-actions">
@@ -409,7 +409,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-      <img src="new-logo-no-background.png" alt="The PPC Pal logo" class="nav-brand-logo"/>
+      <img src="logo-orange.png" alt="The PPC Pal logo" class="nav-brand-logo"/>
       <span class="nav-brand-name">The PPC Pal</span>
     </a>
     <ul class="nav-links">
@@ -693,7 +693,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="contact-details">
           <div class="contact-detail">
             <div class="cd-icon">✉️</div>
-            <div><div class="cd-lbl">Email</div><div class="cd-val"><a href="mailto:contact@theppcpal.co.uk">contact@theppcpal.co.uk</a></div></div>
+            <div><div class="cd-lbl">Email</div><div class="cd-val"><a href="/cdn-cgi/l/email-protection#85e6eaebf1e4e6f1c5f1ede0f5f5e6f5e4e9abe6eaabf0ee"><span class="__cf_email__" data-cfemail="d5b6babba1b4b6a195a1bdb0a5a5b6a5b4b9fbb6bafba0be">[email&#160;protected]</span></a></div></div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">📍</div>
@@ -754,10 +754,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="new-logo-no-background.png" alt="The PPC Pal" class="footer-brand-logo"/>
+      <img src="new-logo-white.png" alt="The PPC Pal" class="footer-brand-logo"/>
       <span class="footer-name">The PPC Pal</span>
     </div>
-    <span class="footer-copy">© 2026 The PPC Pal · North &amp; West Yorkshire · <a href="/privacy.html" style="color:rgba(255,255,255,0.3);text-decoration:underline;">Privacy Policy</a></span>
+    <span class="footer-copy">© 2026 The PPC Pal · North &amp; West Yorkshire · <a href="/privacy.html" style="color:rgba(255,255,255,0.3);text-decoration:underline;">Privacy</a> · <a href="/cookie-policy.html" style="color:rgba(255,255,255,0.3);text-decoration:underline;">Cookies</a></span>
     <ul class="footer-links">
       <li><a href="#how">How it works</a></li>
       <li><a href="#services">Services</a></li>
@@ -767,7 +767,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 // ══════════════════════════════════════════════════════════
 // COOKIE CONSENT
 // Checks localStorage on load. If no decision stored, shows banner.
@@ -775,151 +776,144 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 // On Reject: keeps consent denied → no tracking cookies set.
 // ══════════════════════════════════════════════════════════
 (function() {
-  var stored = localStorage.getItem('ppcp_consent');
-  if (stored === 'accepted') {
-    updateConsent('granted');
-  } else if (!stored) {
-    setTimeout(function() {
-      var b = document.getElementById('cookieBanner');
-      if (b) b.classList.add('visible');
-    }, 1200);
-  }
+var stored = localStorage.getItem(‘ppcp_consent’);
+if (stored === ‘accepted’) {
+updateConsent(‘granted’);
+} else if (!stored) {
+setTimeout(function() {
+var b = document.getElementById(‘cookieBanner’);
+if (b) b.classList.add(‘visible’);
+}, 1200);
+}
 })();
 
 function updateConsent(state) {
-  if (typeof gtag === 'function') {
-    gtag('consent', 'update', {
-      'analytics_storage': state,
-      'ad_storage': state,
-      'ad_user_data': state,
-      'ad_personalization': state
-    });
-  }
+if (typeof gtag === ‘function’) {
+gtag(‘consent’, ‘update’, {
+‘analytics_storage’: state,
+‘ad_storage’: state,
+‘ad_user_data’: state,
+‘ad_personalization’: state
+});
+}
 }
 
 function acceptCookies() {
-  localStorage.setItem('ppcp_consent', 'accepted');
-  updateConsent('granted');
-  hideBanner();
+localStorage.setItem(‘ppcp_consent’, ‘accepted’);
+updateConsent(‘granted’);
+hideBanner();
 }
 
 function rejectCookies() {
-  localStorage.setItem('ppcp_consent', 'rejected');
-  updateConsent('denied');
-  hideBanner();
+localStorage.setItem(‘ppcp_consent’, ‘rejected’);
+updateConsent(‘denied’);
+hideBanner();
 }
 
 function hideBanner() {
-  var b = document.getElementById('cookieBanner');
-  if (b) b.classList.remove('visible');
+var b = document.getElementById(‘cookieBanner’);
+if (b) b.classList.remove(‘visible’);
 }
 
 // ══════════════════════════════════════════════════════════
 // FORM SUBMISSION — push dataLayer event for GTM
-// In GTM: create a Custom Event trigger listening for 'form_submit_success'
+// In GTM: create a Custom Event trigger listening for ‘form_submit_success’
 // Then attach your GA4 event tag and Google Ads Conversion tag to that trigger.
 // ══════════════════════════════════════════════════════════
-var contactForm = document.getElementById('contactForm');
+var contactForm = document.getElementById(‘contactForm’);
 if (contactForm) {
-  contactForm.addEventListener('submit', function() {
-    if (window.dataLayer) {
-      dataLayer.push({ event: 'form_submit_success', form_id: 'contact_form' });
-    }
-  });
+contactForm.addEventListener(‘submit’, function() {
+if (window.dataLayer) {
+dataLayer.push({ event: ‘form_submit_success’, form_id: ‘contact_form’ });
+}
+});
 }
 
 // ══════════════════════════════════════════════════════════
 // MOBILE NAV
 // ══════════════════════════════════════════════════════════
-var hamburger = document.getElementById('hamburger');
-var mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', function () {
-  var isOpen = mobileNav.classList.contains('open');
-  if (isOpen) { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
-  else { mobileNav.classList.add('open'); hamburger.classList.add('open'); document.body.style.overflow = 'hidden'; }
+var hamburger = document.getElementById(‘hamburger’);
+var mobileNav = document.getElementById(‘mobileNav’);
+hamburger.addEventListener(‘click’, function () {
+var isOpen = mobileNav.classList.contains(‘open’);
+if (isOpen) { mobileNav.classList.remove(‘open’); hamburger.classList.remove(‘open’); document.body.style.overflow = ‘’; }
+else { mobileNav.classList.add(‘open’); hamburger.classList.add(‘open’); document.body.style.overflow = ‘hidden’; }
 });
-function closeNav() { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
+function closeNav() { mobileNav.classList.remove(‘open’); hamburger.classList.remove(‘open’); document.body.style.overflow = ‘’; }
 
 // ══════════════════════════════════════════════════════════
 // BAR ANIMATIONS — IntersectionObserver fires when card enters viewport
 // ══════════════════════════════════════════════════════════
-var heroCard = document.getElementById('heroCard');
+var heroCard = document.getElementById(‘heroCard’);
 var barsAnimated = false;
 function animateBars() {
-  if (barsAnimated) return;
-  barsAnimated = true;
-  var bars = [
-    { el: document.getElementById('bar1'), delay: 200 },
-    { el: document.getElementById('bar2'), delay: 400 },
-    { el: document.getElementById('bar3'), delay: 600 }
-  ];
-  bars.forEach(function(bar) {
-    if (!bar.el) return;
-    var target = bar.el.getAttribute('data-width') + '%';
-    setTimeout(function() { bar.el.style.width = target; }, bar.delay);
-  });
+if (barsAnimated) return;
+barsAnimated = true;
+var bars = [
+{ el: document.getElementById(‘bar1’), delay: 200 },
+{ el: document.getElementById(‘bar2’), delay: 400 },
+{ el: document.getElementById(‘bar3’), delay: 600 }
+];
+bars.forEach(function(bar) {
+if (!bar.el) return;
+var target = bar.el.getAttribute(‘data-width’) + ‘%’;
+setTimeout(function() { bar.el.style.width = target; }, bar.delay);
+});
 }
-if (heroCard && 'IntersectionObserver' in window) {
-  new IntersectionObserver(function(entries, obs) {
-    if (entries[0].isIntersecting) { animateBars(); obs.disconnect(); }
-  }, { threshold: 0.3 }).observe(heroCard);
+if (heroCard && ‘IntersectionObserver’ in window) {
+new IntersectionObserver(function(entries, obs) {
+if (entries[0].isIntersecting) { animateBars(); obs.disconnect(); }
+}, { threshold: 0.3 }).observe(heroCard);
 } else {
-  setTimeout(animateBars, 600);
+setTimeout(animateBars, 600);
 }
 
 // ══════════════════════════════════════════════════════════
 // STEP HIGHLIGHTING
 // ══════════════════════════════════════════════════════════
-var stepEls = [document.getElementById('step-0'),document.getElementById('step-1'),document.getElementById('step-2'),document.getElementById('step-3')];
-var howSection = document.getElementById('howSteps');
-var progressStyle = document.createElement('style');
+var stepEls = [document.getElementById(‘step-0’),document.getElementById(‘step-1’),document.getElementById(‘step-2’),document.getElementById(‘step-3’)];
+var howSection = document.getElementById(‘howSteps’);
+var progressStyle = document.createElement(‘style’);
 document.head.appendChild(progressStyle);
 function setActiveUpTo(idx) {
-  for (var j = 0; j < stepEls.length; j++) {
-    if (!stepEls[j]) continue;
-    if (j <= idx) { stepEls[j].classList.add('active'); } else { stepEls[j].classList.remove('active'); }
-  }
-  var pct = idx < 0 ? '0%' : (['0%','33%','66%','100%'][idx] || '0%');
-  progressStyle.textContent = '.how-steps::after { width: calc(' + pct + ' * 0.75) !important; }';
+for (var j = 0; j < stepEls.length; j++) {
+if (!stepEls[j]) continue;
+if (j <= idx) { stepEls[j].classList.add(‘active’); } else { stepEls[j].classList.remove(‘active’); }
+}
+var pct = idx < 0 ? ‘0%’ : ([‘0%’,‘33%’,‘66%’,‘100%’][idx] || ‘0%’);
+progressStyle.textContent = ‘.how-steps::after { width: calc(’ + pct + ’ * 0.75) !important; }’;
 }
 function setActiveStep(idx) {
-  for (var j = 0; j < stepEls.length; j++) {
-    if (!stepEls[j]) continue;
-    if (j === idx) { stepEls[j].classList.add('active'); } else { stepEls[j].classList.remove('active'); }
-  }
+for (var j = 0; j < stepEls.length; j++) {
+if (!stepEls[j]) continue;
+if (j === idx) { stepEls[j].classList.add(‘active’); } else { stepEls[j].classList.remove(‘active’); }
+}
 }
 function updateStepsDesktop() {
-  if (!howSection) return;
-  var r = howSection.getBoundingClientRect();
-  var scrolled = (window.innerHeight - r.top) / (window.innerHeight + r.height);
-  scrolled = Math.max(0, Math.min(1, scrolled));
-  var idx = -1;
-  if (scrolled >= 0.05) idx = 0;
-  if (scrolled >= 0.22) idx = 1;
-  if (scrolled >= 0.38) idx = 2;
-  if (scrolled >= 0.52) idx = 3;
-  setActiveUpTo(idx);
+if (!howSection) return;
+var r = howSection.getBoundingClientRect();
+var scrolled = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+scrolled = Math.max(0, Math.min(1, scrolled));
+var idx = -1;
+if (scrolled >= 0.05) idx = 0;
+if (scrolled >= 0.22) idx = 1;
+if (scrolled >= 0.38) idx = 2;
+if (scrolled >= 0.52) idx = 3;
+setActiveUpTo(idx);
 }
 function updateStepsMobile() {
-  if (!howSection) return;
-  var mid = window.innerHeight / 2; var bestIdx = -1; var bestDist = Infinity;
-  for (var i = 0; i < stepEls.length; i++) {
-    var el = stepEls[i]; if (!el) continue;
-    var r = el.getBoundingClientRect();
-    if (r.bottom < 0 || r.top > window.innerHeight) continue;
-    var dist = Math.abs(r.top + r.height / 2 - mid);
-    if (dist < bestDist) { bestDist = dist; bestIdx = i; }
-  }
-  setActiveStep(bestIdx);
+if (!howSection) return;
+var mid = window.innerHeight / 2; var bestIdx = -1; var bestDist = Infinity;
+for (var i = 0; i < stepEls.length; i++) {
+var el = stepEls[i]; if (!el) continue;
+var r = el.getBoundingClientRect();
+if (r.bottom < 0 || r.top > window.innerHeight) continue;
+var dist = Math.abs(r.top + r.height / 2 - mid);
+if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+}
+setActiveStep(bestIdx);
 }
 function updateSteps() {
-  if (window.innerWidth > 1024) { updateStepsDesktop(); } else { updateStepsMobile(); }
+if (window.innerWidth > 1024) { updateStepsDesktop(); } else { updateStepsMobile(); }
 }
-window.addEventListener('scroll', updateSteps, { passive: true });
-window.addEventListener('touchmove', updateSteps, { passive: true });
-window.addEventListener('resize', updateSteps, { passive: true });
-setTimeout(updateSteps, 300);
-</script>
-
-</body>
-</html>
+window.ad
